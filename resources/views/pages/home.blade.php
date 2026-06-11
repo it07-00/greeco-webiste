@@ -152,7 +152,7 @@
                                         <div class="abs z-2 bottom-0 mb-3 w-100 text-center hover-op-0">
                                             <h4 class="mb-3">{{ $category['name'] }}</h4>
                                         </div>
-                                        <div class="gradient-trans-color-bottom abs w-100 h-40 bottom-0 Z-1"></div>
+                                        <div class="gradient-trans-color-bottom abs w-100 h-40 bottom-0 z-1"></div>
                                     </div>
 
                                     <div class="p-4 py-2 flex-grow-1">
@@ -295,14 +295,13 @@
         @endif
 
     <section class="jarallax">
-        <img src="{{ asset('assets/images/background/11.webp') }}" class="jarallax-img" alt="Báo giá dịch vụ GREECO">
+        <img src="{{ asset('assets/images/background/11.webp') }}" class="jarallax-img" alt="Dịch vụ khoa học GREECO">
         <div class="container">
             <div class="row g-4">
                 <div class="row g-4 mb-3 align-items-center justify-content-center">
                     <div class="col-xl-6 text-center">
                         <div class="subtitle wow fadeInUp">Dịch vụ khoa học</div>
-                        <h2 class="text-uppercase wow fadeInUp" data-wow-delay=".2s">Dịch vụ & <span class="id-color-2">Báo
-                                giá</span></h2>
+                        <h2 class="text-uppercase wow fadeInUp" data-wow-delay=".2s">Dịch vụ & <span class="id-color-2">Tư vấn</span></h2>
                     </div>
                 </div>
             </div>
@@ -370,7 +369,7 @@
                 </div>
 
                 <div class="col-lg-12 text-center">
-                    <a class="btn-main wow fadeInUp" href="{{ route('price-list') }}">Xem thêm dịch vụ</a>
+                    <a class="btn-main wow fadeInUp" href="{{ route('services.index') }}">Xem thêm dịch vụ</a>
                 </div>
 
             </div>
@@ -503,130 +502,6 @@
                                 Những dự án thành công là minh chứng rõ nét cho năng lực và chất lượng dịch vụ của Viện.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="row g-4 mb-3 align-items-center justify-content-center">
-                <div class="col-xl-6 text-center">
-                    <div class="subtitle wow fadeInUp">Chương trình đào tạo</div>
-                    <h2 class="text-uppercase wow fadeInUp" data-wow-delay=".2s">Khóa học & <span class="id-color-2">Bồi
-                            dưỡng</span></h2>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-sm-6 wow fadeInRight" data-wow-delay=".0s">
-                    <div class="relative bg-light p-30 pb-80 rounded-1 h-100">
-                        <div class="text-center mb-3">
-                            <img src="{{ asset('assets/images/logo-icon-color.webp') }}" class="w-80px mb-3"
-                                alt="GREECO Logo">
-                            <h4>Khóa Đào tạo Cơ bản</h4>
-                            <div class="spacer-30"></div>
-                            <span class="fs-64 fw-500 text-dark">$99</span>
-                            <div class="fw-600">/học viên</div>
-                            <div class="spacer-20"></div>
-                        </div>
-
-                        <h5 class="mb-2">Nội dung khóa học</h5>
-                        <ul class="ul-style-2">
-                            <li>Đào tạo nhận thức ESG căn bản</li>
-                            <li>Kiến thức nền tảng Kinh tế Tuần hoàn</li>
-                            <li>Tổng quan về Kiểm kê Khí nhà kính</li>
-                            <li>Giới thiệu Quản lý Môi trường ISO 14001</li>
-                            <li>Cung cấp tài liệu & học liệu chuẩn</li>
-                            <li>Cấp chứng nhận hoàn thành (GREECO)</li>
-                        </ul>
-                        <div class="spacer-20"></div>
-
-                        <div class="abs abs-center w-100 bottom-0 mb-5 px-5">
-                            <a class="btn-main w-100" href="{{ route('services.dao-tao') }}">Đăng ký ngay</a>
-                        </div>
-                        <div class="spacer-20"></div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-sm-6 wow fadeInRight" data-wow-delay=".3s">
-                    <div class="relative overflow-hidden bg-light p-30 pb-80 rounded-1 h-100 jarallax text-light">
-                        <img src="{{ asset('assets/images/misc/5.webp') }}" class="jarallax-img"
-                            alt="Khóa đào tạo chuyên sâu GREECO">
-                        <div class="de-overlay op-5"></div>
-                        <div class="text-center mb-3 relative z-2">
-                            <img src="{{ asset('assets/images/logo-icon-color.webp') }}" class="w-80px mb-3"
-                                alt="GREECO Logo">
-                            <h4>Khóa Đào tạo Chuyên sâu</h4>
-                            <div class="spacer-30"></div>
-                            <span class="fs-64 fw-500">$249</span>
-                            <div class="fw-600">/học viên</div>
-                            <div class="spacer-20"></div>
-                        </div>
-
-                        <h5 class="mb-2 relative z-2">Nội dung khóa học</h5>
-                        <ul class="ul-style-2 relative z-2">
-                            <li>Bao gồm kiến thức gói cơ bản</li>
-                            <li>Kiểm kê Khí nhà kính (ISO 14064 & 14069)</li>
-                            <li>Tính dấu chân Carbon sản phẩm (ISO 14067)</li>
-                            <li>Đánh giá rủi ro an toàn sức khỏe HSE</li>
-                            <li>Phân tích nguyên nhân sự cố gốc rễ (RCA)</li>
-                            <li>Thực hành thực tế cùng chuyên gia</li>
-                        </ul>
-                        <div class="spacer-20"></div>
-
-                        <div class="abs abs-center w-100 bottom-0 mb-5 px-5 relative z-2">
-                            <a class="btn-main w-100" href="{{ route('services.dao-tao') }}">Đăng ký ngay</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-sm-6 wow fadeInRight" data-wow-delay=".6s">
-                    <div class="relative bg-light p-30 pb-80 rounded-1 h-100">
-                        <div class="text-center mb-3">
-                            <img src="{{ asset('assets/images/logo-icon-color.webp') }}" class="w-80px mb-3"
-                                alt="GREECO Logo">
-                            <h4>Khóa Đào tạo Chiến lược</h4>
-                            <div class="spacer-30"></div>
-                            <span class="fs-64 fw-500 text-dark">$449</span>
-                            <div class="fw-600">/học viên</div>
-                            <div class="spacer-20"></div>
-                        </div>
-
-                        <h5 class="mb-2">Nội dung khóa học</h5>
-                        <ul class="ul-style-2">
-                            <li>Bao gồm chuyên môn gói chuyên sâu</li>
-                            <li>Lập báo cáo ESG theo tiêu chuẩn GRI</li>
-                            <li>Xây dựng lộ trình Net Zero & cam kết SBTi</li>
-                            <li>Cơ chế điều chỉnh biên giới Carbon (CBAM)</li>
-                            <li>Chứng nhận chuỗi cung ứng (ISCC, GRS)</li>
-                            <li>Tư vấn lộ trình 1-1 cùng ban chuyên gia</li>
-                        </ul>
-                        <div class="spacer-20"></div>
-
-                        <div class="abs abs-center w-100 bottom-0 mb-5 px-5">
-                            <a class="btn-main w-100" href="{{ route('services.dao-tao') }}">Đăng ký ngay</a>
-                        </div>
-                        <div class="spacer-20"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="p-4" aria-label="section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <a class="d-block hover popup-youtube" href="https://www.youtube.com/watch?v=C6rf51uHWJg">
-                        <div class="relative overflow-hidden rounded-1">
-                            <div class="absolute start-0 w-100 abs-middle fs-36 text-white text-center z-2">
-                                <div class="player wow scaleIn"><span></span></div>
-                            </div>
-                            <div class="absolute w-100 h-100 top-0 bg-dark hover-op-05"></div>
-                            <img src="{{ asset('assets/images/background/1.webp') }}" class="w-100 hover-scale-1-1"
-                                alt="Video giới thiệu GREECO">
-                        </div>
-                    </a>
                 </div>
             </div>
         </div>

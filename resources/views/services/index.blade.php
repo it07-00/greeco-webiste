@@ -54,7 +54,7 @@
                                         <div class="abs z-2 bottom-0 mb-3 w-100 text-center hover-op-0">
                                             <h4 class="mb-3">{{ $category['name'] }}</h4>
                                         </div>
-                                        <div class="gradient-trans-color-bottom abs w-100 h-40 bottom-0 Z-1"></div>
+                                        <div class="gradient-trans-color-bottom abs w-100 h-40 bottom-0 z-1"></div>
                                     </div>
                                     <div class="p-4 py-3 flex-grow-1">
                                         <p class="mb-0">{{ $category['description'] }}</p>
