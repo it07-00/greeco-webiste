@@ -637,9 +637,6 @@ header:not(.smaller) #btn-extra span {
 }
 
 /* Source: resources/views/projects/show.blade.php */
-.rounded-10px {
-    border-radius: 10px;
-}
 .text-warning {
     color: #f1c40f !important;
 }
@@ -728,9 +725,6 @@ header:not(.smaller) #btn-extra span {
 }
 
 /* Source: resources/views/services/dao-tao.blade.php */
-.rounded-10px {
-    border-radius: 10px;
-}
 .training-card {
     background: rgba(var(--primary-color-rgb), 0.02);
     border: 1px solid rgba(var(--primary-color-rgb), 0.15);
@@ -745,9 +739,6 @@ header:not(.smaller) #btn-extra span {
 }
 
 /* Source: resources/views/services/du-an.blade.php */
-.rounded-10px {
-    border-radius: 10px;
-}
 .project-item-box {
     background: #ffffff;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
@@ -773,9 +764,6 @@ header:not(.smaller) #btn-extra span {
 }
 
 /* Source: resources/views/services/hoi-thao.blade.php */
-.rounded-10px {
-    border-radius: 10px;
-}
 .event-feature-box {
     background: rgba(var(--primary-color-rgb), 0.02);
     border: 1px solid rgba(var(--primary-color-rgb), 0.1);
@@ -812,9 +800,6 @@ header:not(.smaller) #btn-extra span {
 }
 
 /* Source: resources/views/services/nghien-cuu.blade.php */
-.rounded-10px {
-    border-radius: 10px;
-}
 .research-card {
     background: rgba(var(--primary-color-rgb), 0.02);
     border: 1px solid rgba(var(--primary-color-rgb), 0.1);
@@ -828,9 +813,6 @@ header:not(.smaller) #btn-extra span {
 }
 
 /* Source: resources/views/services/show.blade.php */
-.rounded-10px {
-    border-radius: 10px;
-}
 .service-content img {
     max-width: 100%;
     height: auto;
@@ -846,9 +828,6 @@ header:not(.smaller) #btn-extra span {
 }
 
 /* Source: resources/views/services/tu-van.blade.php */
-.rounded-10px {
-    border-radius: 10px;
-}
 .icon-box-service {
     background: rgba(var(--primary-color-rgb), .05);
     transition: all 0.3s ease;
@@ -865,6 +844,10 @@ header:not(.smaller) #btn-extra span {
 }
 
 /* View utility classes */
+.rounded-10px {
+    border-radius: 10px;
+}
+
 .error-page-section {
     padding: 120px 0;
 }
@@ -914,17 +897,17 @@ header:not(.smaller) #btn-extra span {
     border-width: 3px;
 }
 
-.org-card-research {
+.org-card.org-card-research {
     border-color: #3b82f6;
     background: #eff6ff;
 }
 
-.org-card-communications {
+.org-card.org-card-communications {
     border-color: #fd7e14;
     background: #fffaf0;
 }
 
-.org-card-international {
+.org-card.org-card-international {
     border-color: #f97316;
     background: #fff7ed;
 }
@@ -961,11 +944,13 @@ header:not(.smaller) #btn-extra span {
     color: #ea580c;
 }
 
-.org-text-orange-dark {
+.org-card h4.org-text-orange-dark,
+.org-card h5.org-text-orange-dark,
+.org-card i.org-text-orange-dark {
     color: #c2410c;
 }
 
-.org-research-title {
+.org-card h5.org-research-title {
     color: #1d4ed8;
 }
 
@@ -975,7 +960,7 @@ header:not(.smaller) #btn-extra span {
     flex-shrink: 0;
 }
 
-.about-accordion-button {
-    background: rgba(52, 168, 83, 0.08);
-    padding: 15px 20px;
+.custom-accordion .about-accordion-button {
+    background: rgba(52, 168, 83, 0.08) !important;
+    padding: 15px 20px !important;
 }

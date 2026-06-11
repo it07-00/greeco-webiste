@@ -390,25 +390,30 @@
                 </div>
                 <div class="row g-4">
                     @foreach($latestPosts as $post)
-                        <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="{{ $loop->index * 0.2 }}s">
-                            <div class="rounded-1 bg-white overflow-hidden shadow-soft h-100 d-flex flex-column">
-                                <div class="relative overflow-hidden">
-                                    <img src="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('assets/images/blog/' . (($loop->index % 3) + 1) . '.webp') }}"
-                                        class="w-100 hover-scale-1-1" alt="{{ $post->title }}">
-                                </div>
-                                <div class="p-4 flex-grow-1 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h4 class="fs-18 mb-2"><a class="text-dark"
-                                                href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></h4>
-                                        <p class="text-muted fs-14">{{ Str::limit($post->excerpt, 100) }}</p>
-                                    </div>
-                                    <div
-                                        class="mt-3 pt-3 border-top d-flex justify-content-between align-items-center fs-13 text-muted">
-                                        <span><i
-                                                class="fa fa-calendar-days me-1"></i>{{ $post->published_at ? $post->published_at->format('d/m/Y') : '' }}</span>
-                                        <a href="{{ route('posts.show', $post) }}" class="id-color fw-bold">Chi tiết <i
-                                                class="fa fa-arrow-right ms-1"></i></a>
-                                    </div>
+                        @php
+                            $day = $post->published_at ? $post->published_at->format('d') : $post->created_at->format('d');
+                            $monthNum = $post->published_at ? $post->published_at->format('n') : $post->created_at->format('n');
+                            $monthStr = 'Th' . $monthNum;
+                            $postImg = $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('assets/images/blog/' . (($loop->index % 3) + 1) . '.webp');
+                        @endphp
+                        <!-- post -->
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ $loop->index * 0.2 }}s">
+                            <div class="rounded-1 bg-light overflow-hidden blog-post-card">
+                                <div class="row g-2 h-100">
+                                    <div class="col-sm-6">
+                                        <div class="blog-post-img-container relative" data-bgimage="url({{ $postImg }})">
+                                            <div class="abs start-0 top-0 bg-color-2 text-white p-3 pb-2 m-3 text-center fw-600 rounded-5px">
+                                                <div class="fs-36 mb-0">{{ $day }}</div>
+                                                <span>{{ $monthStr }}</span>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                    <div class="col-sm-6 relative">
+                                        <div class="p-30 pb-40">
+                                            <h4><a class="text-dark" href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></h4>
+                                            <p class="mb-0 fs-14 text-muted">{{ Str::limit($post->excerpt, 120) }}</p>
+                                        </div>
+                                    </div>                             
                                 </div>
                             </div>
                         </div>
