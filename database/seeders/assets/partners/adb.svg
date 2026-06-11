@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120">
+  <rect width="360" height="120" rx="18" fill="#fffbf0"/>
+  <path d="M58 20 L85 65 L58 90 L31 65 Z" fill="#c8a000"/>
+  <path d="M58 35 L75 62 L58 78 L41 62 Z" fill="#fff"/>
+  <text x="106" y="55" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#c8a000">ADB</text>
+  <text x="106" y="82" font-family="Arial,sans-serif" font-size="14" fill="#997a00">Asian Dev. Bank</text>
+</svg>

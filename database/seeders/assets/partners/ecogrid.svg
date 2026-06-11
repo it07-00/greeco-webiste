@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120">
+  <rect width="360" height="120" rx="18" fill="#f1f9fc"/>
+  <rect x="25" y="25" width="70" height="70" rx="18" fill="#087f9c"/>
+  <path d="M64 32 42 63h17l-5 25 25-36H62z" fill="#f7d34a"/>
+  <text x="116" y="58" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#086b82">ECOGRID</text>
+  <text x="116" y="82" font-family="Arial, sans-serif" font-size="16" fill="#4d91a1">CLEAN ENERGY</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120">
+  <rect width="360" height="120" rx="18" fill="#f0fff8"/>
+  <circle cx="58" cy="60" r="36" fill="#00a86b"/>
+  <circle cx="58" cy="60" r="22" fill="#fff"/>
+  <circle cx="58" cy="60" r="12" fill="#00a86b"/>
+  <text x="108" y="55" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#00a86b">IUCN</text>
+  <text x="108" y="82" font-family="Arial,sans-serif" font-size="13" fill="#2e8b57">Conservation Union</text>
+</svg>

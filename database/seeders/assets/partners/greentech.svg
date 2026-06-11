@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120">
+  <rect width="360" height="120" rx="18" fill="#f4f8fd"/>
+  <path d="M22 47 60 25l38 22-38 22z" fill="#275d9b"/>
+  <path d="M37 60v21c15 14 31 14 46 0V60L60 73z" fill="#4ca56b"/>
+  <text x="115" y="55" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#275d9b">GREENTECH</text>
+  <text x="115" y="81" font-family="Arial, sans-serif" font-size="16" fill="#5c7da4">UNIVERSITY</text>
+</svg>

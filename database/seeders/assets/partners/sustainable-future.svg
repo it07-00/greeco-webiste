@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120">
+  <rect width="360" height="120" rx="18" fill="#fff9ef"/>
+  <circle cx="60" cy="60" r="38" fill="#db8b18"/>
+  <path d="M35 70h50M42 58h36M50 46h20" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+  <text x="112" y="55" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#b56f0d">SUSTAINABLE</text>
+  <text x="112" y="81" font-family="Arial, sans-serif" font-size="17" fill="#c88b35">FUTURE FUND</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120">
+  <rect width="360" height="120" rx="18" fill="#f4fff0"/>
+  <ellipse cx="58" cy="60" rx="36" ry="36" fill="#2e7d32"/>
+  <path d="M44 60 Q58 30 72 60 Q58 90 44 60Z" fill="#fff" opacity="0.8"/>
+  <text x="108" y="52" font-family="Arial,sans-serif" font-size="22" font-weight="800" fill="#2e7d32">MONRE</text>
+  <text x="108" y="79" font-family="Arial,sans-serif" font-size="13" fill="#388e3c">Bộ Tài nguyên &amp; MT</text>
+</svg>

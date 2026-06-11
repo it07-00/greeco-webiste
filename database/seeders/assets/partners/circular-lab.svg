@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120">
+  <rect width="360" height="120" rx="18" fill="#f6f4fc"/>
+  <circle cx="60" cy="60" r="37" fill="none" stroke="#6750a4" stroke-width="12" stroke-dasharray="64 20"/>
+  <circle cx="60" cy="60" r="12" fill="#8f78c6"/>
+  <text x="115" y="57" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#59448d">CIRCULAR LAB</text>
+  <text x="115" y="82" font-family="Arial, sans-serif" font-size="16" fill="#8979ac">MATERIAL INNOVATION</text>
+</svg>

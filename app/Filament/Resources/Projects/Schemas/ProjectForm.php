@@ -1,0 +1,99 @@
+<?php
+
+namespace App\Filament\Resources\Projects\Schemas;
+
+use Illuminate\Support\Str;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\DatePicker;
+use Filament\Schemas\Schema;
+
+class ProjectForm
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Tabs::make('ProjectTabs')
+                    ->tabs([
+                        Tab::make('Thông tin chính')
+                            ->schema([
+                                TextInput::make('title')
+                                    ->label('Tên dự án')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
+                                TextInput::make('slug')
+                                    ->label('Slug')
+                                    ->required()
+                                    ->unique(ignoreRecord: true),
+                                TextInput::make('client_name')
+                                    ->label('Khách hàng / Đối tác')
+                                    ->maxLength(255),
+                                TextInput::make('location')
+                                    ->label('Địa điểm')
+                                    ->maxLength(255),
+                                DatePicker::make('started_at')
+                                    ->label('Ngày bắt đầu'),
+                                DatePicker::make('completed_at')
+                                    ->label('Ngày hoàn thành'),
+                                Textarea::make('excerpt')
+                                    ->label('Mô tả ngắn/Tóm tắt')
+                                    ->rows(3)
+                                    ->columnSpanFull(),
+                            ])->columns(2),
+                        Tab::make('Nội dung')
+                            ->schema([
+                                RichEditor::make('content')
+                                    ->label('Nội dung chi tiết')
+                                    ->columnSpanFull(),
+                            ]),
+                        Tab::make('Hình ảnh')
+                            ->schema([
+                                FileUpload::make('thumbnail')
+                                    ->label('Ảnh đại diện dự án')
+                                    ->image()
+                                    ->directory('projects'),
+                                FileUpload::make('og_image')
+                                    ->label('Ảnh chia sẻ Facebook/Zalo')
+                                    ->image()
+                                    ->directory('seo/og-images'),
+                            ]),
+                        Tab::make('SEO')
+                            ->schema([
+                                TextInput::make('meta_title')
+                                    ->label('Meta Title')
+                                    ->maxLength(255),
+                                Textarea::make('meta_description')
+                                    ->label('Meta Description')
+                                    ->rows(3),
+                                TextInput::make('canonical_url')
+                                    ->label('Canonical URL'),
+                            ]),
+                        Tab::make('Trạng thái')
+                            ->schema([
+                                Toggle::make('is_featured')
+                                    ->label('Nổi bật')
+                                    ->default(false),
+                                Toggle::make('is_indexable')
+                                    ->label('Cho Google index')
+                                    ->default(true),
+                                Toggle::make('is_active')
+                                    ->label('Hiển thị')
+                                    ->default(true),
+                                TextInput::make('sort_order')
+                                    ->label('Thứ tự hiển thị')
+                                    ->numeric()
+                                    ->default(0),
+                            ]),
+                    ])
+                    ->columnSpanFull(),
+            ]);
+    }
+}

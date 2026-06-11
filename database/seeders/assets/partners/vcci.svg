@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120">
+  <rect width="360" height="120" rx="18" fill="#fff5f5"/>
+  <rect x="22" y="28" width="68" height="68" rx="12" fill="#d32f2f"/>
+  <text x="56" y="74" font-family="Arial,sans-serif" font-size="30" font-weight="900" fill="#fff" text-anchor="middle">VN</text>
+  <text x="106" y="52" font-family="Arial,sans-serif" font-size="22" font-weight="800" fill="#d32f2f">VCCI</text>
+  <text x="106" y="79" font-family="Arial,sans-serif" font-size="13" fill="#9e3030">Phòng TM &amp; CN VN</text>
+</svg>
