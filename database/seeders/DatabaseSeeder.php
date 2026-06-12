@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         // 2. Seed Banners / Sliders (Only 2 records using the new visual banners)
         Banner::query()->delete();
         
-        $storageBannersDir = storage_path('app/public/banners');
+        $storageBannersDir = public_path('storage/banners');
         if (!file_exists($storageBannersDir)) {
             mkdir($storageBannersDir, 0755, true);
         }
@@ -241,7 +241,7 @@ class DatabaseSeeder extends Seeder
 
         // 7. Seed Posts (At least 6 records)
         // Copy blog assets to storage/posts if they don't exist
-        $storagePostsDir = storage_path('app/public/posts');
+        $storagePostsDir = public_path('storage/posts');
         if (!file_exists($storagePostsDir)) {
             mkdir($storagePostsDir, 0755, true);
         }
@@ -693,7 +693,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // 11. Seed Website Settings (At least 6 records)
-        $storageSettingsDir = storage_path('app/public/settings');
+        $storageSettingsDir = public_path('storage/settings');
         if (!file_exists($storageSettingsDir)) {
             mkdir($storageSettingsDir, 0755, true);
         }
