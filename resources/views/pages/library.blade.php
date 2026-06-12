@@ -338,9 +338,15 @@
             font-style: normal !important;
             display: inline-block !important;
             line-height: 1 !important;
+            color: #ffffff !important;
             speak: none !important;
             -webkit-font-smoothing: antialiased !important;
             -moz-osx-font-smoothing: grayscale !important;
+        }
+
+        .df-lightbox-close:hover::before,
+        .df-ui-btn.df-icon-close:hover::before {
+            color: #071524 !important;
         }
     </style>
 @endpush
