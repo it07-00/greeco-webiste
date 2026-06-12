@@ -39,12 +39,14 @@ class DatabaseSeeder extends Seeder
         $storageBannersDir = public_path('storage/banners');
         if (!file_exists($storageBannersDir)) {
             mkdir($storageBannersDir, 0755, true);
+            chmod($storageBannersDir, 0755);
         }
         foreach (['5.png', '6.png'] as $file) {
             $src = public_path("assets/images/{$file}");
             $dest = "{$storageBannersDir}/{$file}";
             if (file_exists($src)) {
                 copy($src, $dest);
+                chmod($dest, 0644);
             }
         }
 
@@ -244,12 +246,14 @@ class DatabaseSeeder extends Seeder
         $storagePostsDir = public_path('storage/posts');
         if (!file_exists($storagePostsDir)) {
             mkdir($storagePostsDir, 0755, true);
+            chmod($storagePostsDir, 0755);
         }
         for ($i = 1; $i <= 6; $i++) {
             $source = public_path("assets/images/blog/{$i}.webp");
             $dest = "{$storagePostsDir}/{$i}.webp";
             if (file_exists($source)) {
                 copy($source, $dest);
+                chmod($dest, 0644);
             }
         }
 
@@ -696,6 +700,7 @@ class DatabaseSeeder extends Seeder
         $storageSettingsDir = public_path('storage/settings');
         if (!file_exists($storageSettingsDir)) {
             mkdir($storageSettingsDir, 0755, true);
+            chmod($storageSettingsDir, 0755);
         }
 
         $filesToCopy = [
@@ -714,6 +719,7 @@ class DatabaseSeeder extends Seeder
             $destPath = "{$storageSettingsDir}/{$file['dest']}";
             if (file_exists($srcPath)) {
                 copy($srcPath, $destPath);
+                chmod($destPath, 0644);
             }
         }
 
@@ -722,6 +728,7 @@ class DatabaseSeeder extends Seeder
         $pdfDest = "{$storageSettingsDir}/GREECO_Capability_Profile.pdf";
         if (file_exists($pdfSrc)) {
             copy($pdfSrc, $pdfDest);
+            chmod($pdfDest, 0644);
         }
 
         $settingsData = [
