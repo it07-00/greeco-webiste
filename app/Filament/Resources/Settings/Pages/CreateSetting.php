@@ -22,6 +22,8 @@ class CreateSetting extends CreateRecord
             default => null,
         };
 
+        unset($data['text_value'], $data['textarea_value'], $data['editor_value'], $data['image_value'], $data['file_value']);
+
         return $data;
     }
 }

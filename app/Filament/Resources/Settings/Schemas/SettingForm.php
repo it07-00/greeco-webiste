@@ -50,41 +50,36 @@ class SettingForm
                             ->hidden()
                             ->dehydrated(true),
 
-                        TextInput::make('text_value')
+                         TextInput::make('text_value')
                             ->label('Giá trị')
                             ->visible(fn (callable $get) => in_array($get('type'), ['text', null, '']))
-                            ->dehydrated(false)
                             ->columnSpanFull(),
-
-                        Textarea::make('textarea_value')
+ 
+                         Textarea::make('textarea_value')
                             ->label('Giá trị')
                             ->visible(fn (callable $get) => $get('type') === 'textarea')
-                            ->dehydrated(false)
                             ->rows(5)
                             ->columnSpanFull(),
-
-                        RichEditor::make('editor_value')
+ 
+                         RichEditor::make('editor_value')
                             ->label('Giá trị')
                             ->visible(fn (callable $get) => $get('type') === 'editor')
-                            ->dehydrated(false)
                             ->columnSpanFull(),
-
-                        FileUpload::make('image_value')
+ 
+                         FileUpload::make('image_value')
                             ->label('Hình ảnh')
                             ->image()
                             ->disk('public')
                             ->directory('settings')
                             ->visible(fn (callable $get) => $get('type') === 'image')
-                            ->dehydrated(false)
                             ->columnSpanFull(),
-
-                        FileUpload::make('file_value')
+ 
+                         FileUpload::make('file_value')
                             ->label('Tệp tin (PDF, Doc, v.v.)')
                             ->disk('public')
                             ->directory('settings')
                             ->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])
                             ->visible(fn (callable $get) => $get('type') === 'file')
-                            ->dehydrated(false)
                             ->columnSpanFull(),
                     ]),
             ]);
