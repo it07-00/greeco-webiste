@@ -302,14 +302,12 @@
 
         /* Fix and customize DearFlip Lightbox close button */
         .df-lightbox-close,
-        .df-ui-btn.df-icon-close,
-        .ti-close.df-lightbox-close {
+        .df-ui-btn.df-icon-close {
             background: rgba(255, 255, 255, 0.1) !important;
             border: 1px solid rgba(255, 255, 255, 0.2) !important;
             border-radius: 50% !important;
             width: 44px !important;
             height: 44px !important;
-            font-size: 0 !important;         /* ẩn icon gốc của Themify/DearFlip */
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -321,9 +319,8 @@
         }
 
         .df-lightbox-close:hover,
-        .df-ui-btn.df-icon-close:hover,
-        .ti-close.df-lightbox-close:hover {
-            background: #A7C957 !important;
+        .df-ui-btn.df-icon-close:hover {
+            background: #A7C957 !important; /* green accent */
             color: #071524 !important;
             border-color: #A7C957 !important;
             transform: scale(1.1) rotate(90deg) !important;
@@ -331,17 +328,17 @@
             box-shadow: 0 0 15px rgba(167, 201, 87, 0.5) !important;
         }
 
-        /* Dùng Unicode × không phụ thuộc font icon */
+        /* Force Unicode × icon for close button */
         .df-lightbox-close::before,
         .df-ui-btn.df-icon-close::before,
         .ti-close.df-lightbox-close::before {
-            content: "\00D7" !important;     /* ký tự × Unicode chuẩn */
+            content: "\00D7" !important;
             font-family: Arial, Helvetica, sans-serif !important;
             font-size: 28px !important;
             font-weight: 400 !important;
             font-style: normal !important;
             line-height: 1 !important;
-            color: #ffffff !important;
+            color: #071524 !important;
             display: block !important;
         }
 
