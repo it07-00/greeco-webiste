@@ -6,22 +6,20 @@
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-between xs-hide">
                         <div class="d-flex">
-                            <div class="topbar-widget me-3"><a href="#"><i class="icofont-clock-time"></i>Thứ 2 - Thứ 7:
-                                    08:00 - 17:00</a></div>
-                            <div class="topbar-widget me-3"><a href="#"><i class="icofont-location-pin"></i>150 Đường
-                                    38-CL, Phường Cát Lái, TP. HCM</a></div>
-                            <div class="topbar-widget me-3"><a href="mailto:info@greeco.vn"><i
-                                        class="icofont-envelope"></i>info@greeco.vn</a></div>
+                            <div class="topbar-widget me-3"><a href="#"><i class="icofont-clock-time"></i>{{ setting('work_hours', 'Thứ 2 - Thứ 7: 08:00 - 17:00') }}</a></div>
+                            <div class="topbar-widget me-3"><a href="#"><i class="icofont-location-pin"></i>{{ setting('address', '150 Đường 38-CL, Phường Cát Lái, TP. HCM') }}</a></div>
+                            <div class="topbar-widget me-3"><a href="mailto:{{ setting('email', 'info@greeco.vn') }}"><i
+                                        class="icofont-envelope"></i>{{ setting('email', 'info@greeco.vn') }}</a></div>
                         </div>
 
                         <div class="d-flex">
                             <div class="social-icons">
-                                <a href="https://www.facebook.com/greecoofficial?locale=vi_VN"><i
+                                <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i
                                         class="fa-brands fa-facebook fa-lg"></i></a>
-                                <a href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
-                                <a href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
-                                <a href="#"><i class="fa-brands fa-pinterest fa-lg"></i></a>
-                                <a href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                                <a href="{{ setting('twitter_url', '#') }}"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                                <a href="{{ setting('youtube_url', '#') }}"><i class="fa-brands fa-youtube fa-lg"></i></a>
+                                <a href="{{ setting('pinterest_url', '#') }}"><i class="fa-brands fa-pinterest fa-lg"></i></a>
+                                <a href="{{ setting('instagram_url', '#') }}"><i class="fa-brands fa-instagram fa-lg"></i></a>
                             </div>
                         </div>
                     </div>
@@ -39,11 +37,11 @@
                         <div id="logo">
                             <a href="{{ route('home') }}" class="logo-container">
                                 <div class="logo-text-wrap">
-                                    <img class="logo-main" src="{{ asset('assets/images/logo-text-white-cropped.png') }}"
+                                    <img class="logo-main" src="{{ setting('logo_light') ? asset('storage/' . setting('logo_light')) : asset('assets/images/logo-text-white-cropped.png') }}"
                                         alt="GREECO logo">
-                                    <img class="logo-scroll" src="{{ asset('assets/images/logo-text-cropped.png') }}"
+                                    <img class="logo-scroll" src="{{ setting('logo_dark') ? asset('storage/' . setting('logo_dark')) : asset('assets/images/logo-text-cropped.png') }}"
                                         alt="GREECO logo">
-                                    <img class="logo-mobile" src="{{ asset('assets/images/logo-text-white-cropped.png') }}"
+                                    <img class="logo-mobile" src="{{ setting('logo_light') ? asset('storage/' . setting('logo_light')) : asset('assets/images/logo-text-white-cropped.png') }}"
                                         alt="GREECO logo">
                                 </div>
                             </a>
@@ -67,7 +65,7 @@
                                     <li><a href="{{ route('services.dao-tao') }}">Đào tạo & Bồi dưỡng</a></li>
                                     <li><a href="{{ route('services.tu-van') }}">Dịch vụ Tư vấn</a></li>
                                     <li><a href="{{ route('services.du-an') }}">Phát triển Dự án</a></li>
-                                    <li><a href="{{ route('services.nghien-cuu') }}">Nghiên cứu & Chuyển giao</a></li>
+                                    <li><a href="{{ route('services.nghien-cuu') }}">Nghiên cứu và Chuyển giao Công nghệ</a></li>
                                     <li><a href="{{ route('services.hoi-thao') }}">Hội thảo & Truyền thông</a></li>
                                     <li><a href="{{ route('library') }}">Thư viện & Hồ sơ</a></li>
                                 </ul>

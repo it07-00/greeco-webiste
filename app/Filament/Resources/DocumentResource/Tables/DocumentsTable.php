@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\Banners\Tables;
+namespace App\Filament\Resources\DocumentResource\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class BannersTable
+class DocumentsTable
 {
     public static function configure(Table $table): Table
     {
@@ -19,15 +18,21 @@ class BannersTable
                 TextColumn::make('id')
                     ->label('ID')
                     ->sortable(),
-                ImageColumn::make('image')
-                    ->label('Hình ảnh')
-                    ->disk('public'),
-                TextColumn::make('url')
-                    ->label('Đường dẫn liên kết')
+                TextColumn::make('number')
+                    ->label('Số hiệu / Ký hiệu')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('type')
+                    ->label('Loại văn bản')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('title')
+                    ->label('Tiêu đề')
+                    ->searchable()
+                    ->limit(50)
+                    ->sortable(),
                 IconColumn::make('is_active')
-                    ->label('Hoạt động')
+                    ->label('Hiển thị')
                     ->boolean(),
                 TextColumn::make('sort_order')
                     ->label('Thứ tự')

@@ -35,8 +35,15 @@
                                 <!-- Slide -->
                                 <div class="swiper-slide banner-slide-{{ $loop->iteration }}">
                                     <div class="swiper-inner">
-                                        <img src="{{ asset('storage/' . $banner->image) }}" class="w-100 banner-img"
-                                            alt="GREECO Banner">
+                                        @if($banner->url)
+                                            <a href="{{ $banner->url }}">
+                                                <img src="{{ asset('storage/' . $banner->image) }}" class="w-100 banner-img"
+                                                    alt="GREECO Banner">
+                                            </a>
+                                        @else
+                                            <img src="{{ asset('storage/' . $banner->image) }}" class="w-100 banner-img"
+                                                alt="GREECO Banner">
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach
@@ -83,8 +90,8 @@
                     <div class="col-lg-6">
                         <div class="ps-lg-5 position-relative z-3">
                             <div class="subtitle id-color wow fadeInUp" data-wow-delay=".2s">Chào mừng đến với GREECO</div>
-                            <h2 class="text-uppercase wow fadeInUp" data-wow-delay=".4s">Nghiên cứu & Thúc đẩy <span
-                                    class="id-color-2">Kinh tế Xanh</span></h2>
+                            <h2 class="text-uppercase wow fadeInUp" data-wow-delay=".4s">Nghiên&nbsp;cứu & Thúc&nbsp;đẩy <span
+                                    class="id-color-2">Kinh&nbsp;tế&nbsp;Xanh</span></h2>
                             <p class="wow fadeInUp" data-wow-delay=".6s">Viện Nghiên cứu và Phát triển Kinh tế Xanh (GREECO)
                                 là tổ chức khoa học và công nghệ hoạt động trong lĩnh vực nghiên cứu, ứng dụng và chuyển
                                 giao các giải pháp phát triển bền vững, kinh tế xanh và công nghệ môi trường. Với đội ngũ
@@ -146,7 +153,7 @@
                                         <div class="abs w-100 px-4 hover-op-1 z-4 hover-mt-40 abs-centered">
                                             <span class="btn-main">Xem chi tiết</span>
                                         </div>
-                                        <img src="{{ asset('assets/images/logo-icon.webp') }}" class="abs abs-centered w-20"
+                                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="abs abs-centered w-20"
                                             alt="GREECO icon">
                                         <div class="abs bg-color z-2 top-0 w-100 h-100 hover-op-1"></div>
                                         <div class="abs z-2 bottom-0 mb-3 w-100 text-center hover-op-0">
@@ -169,7 +176,7 @@
         <section class="jarallax text-light relative">
             <img src="{{ asset('assets/images/background/8.webp') }}" class="jarallax-img"
                 alt="Hành trình phát triển GREECO">
-            <div class="de-overlay"></div>
+            <div class="de-overlay" style="background: linear-gradient(90deg, rgba(30, 31, 34, 0.85) 0%, rgba(30, 31, 34, 0.45) 100%);"></div>
             <div class="container relative z-1">
                 <div class="row g-4 gx-5 align-items-center">
                     <div class="col-lg-6">
@@ -205,8 +212,8 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="rounded-1 relative bg-dark-2 p-4">
-                                            <img src="{{ asset('assets/images/icons/tree.png') }}"
+                                        <div class="rounded-1 relative bg-blur p-4">
+                                            <img src="{{ setting('icon_journey_tree') ? asset('storage/' . setting('icon_journey_tree')) : asset('assets/images/icons/tree.png') }}"
                                                 class="abs abs-middle w-60px" alt="Dự án thành công icon">
                                             <div class="de_count ps-80 wow fadeInUp">
                                                 <h2 class="mb-0 fs-32"><span class="timer" data-to="550"
@@ -221,8 +228,8 @@
                                 <div class="row g-4">
                                     <div class="spacer-single sm-hide"></div>
                                     <div class="col-lg-12">
-                                        <div class="rounded-1 relative bg-dark-2 p-4">
-                                            <img src="{{ asset('assets/images/icons/happy.png') }}"
+                                        <div class="rounded-1 relative bg-blur p-4">
+                                            <img src="{{ setting('icon_journey_happy') ? asset('storage/' . setting('icon_journey_happy')) : asset('assets/images/icons/happy.png') }}"
                                                 class="abs abs-middle w-60px" alt="Doanh nghiệp đồng hành icon">
                                             <div class="de_count ps-80 wow fadeInUp">
                                                 <h2 class="mb-0 fs-32"><span class="timer" data-to="850"
@@ -256,120 +263,84 @@
             </div>
         </section>
 
-        <!-- Dynamic Partners Logos Marquee -->
-        @if($partners->isNotEmpty())
-                <section class="py-5 bg-white border-top border-bottom partners-marquee-section">
-                    <div class="container-fluid px-0">
-                        <div class="text-center mb-4 wow fadeInUp px-3">
-                            <div class="subtitle">GREECO Partners</div>
-                            <h4 class="text-uppercase id-color-2 wow fadeInUp" data-wow-delay=".2s">Đối tác & Khách hàng đồng hành
-                            </h4>
-                        </div>
-                        <div class="partners-track-wrapper">
-                            {{-- Render 3 lần để tạo vòng lặp liền mạch dù ít hay nhiều partners --}}
-                            @foreach([1, 2, 3] as $repeat)
-                                    <div class="partners-track" aria-hidden="{{ $repeat > 1 ? 'true' : 'false' }}">
-                                        @foreach($partners as $partner)
-                                                <div class="partner-item">
-                                                    @if($partner->website_url)
-                                                        <a href="{{ $partner->website_url }}" target="_blank" rel="noopener noreferrer"
-                                                            class="partner-logo-link" aria-label="Truy cập website {{ $partner->name }}">
-                                                    @else
-                                                            <div class="partner-logo-link">
-                                                        @endif
-                                                            <img src="{{ asset('storage/' . $partner->logo) }}" class="partner-logo-img"
-                                                                alt="{{ $partner->name }}" title="{{ $partner->name }}" loading="lazy">
-                                                            @if($partner->website_url)
-                                                                </a>
-                                                            @else
-                                                        </div>
-                                                    @endif
-                                            </div>
-                                        @endforeach
-                                </div>
-                            @endforeach
-                    </div>
-            </div>
-            </section>
 
-        @endif
-
-    <section class="jarallax">
+    <section class="jarallax text-light relative">
         <img src="{{ asset('assets/images/background/11.webp') }}" class="jarallax-img" alt="Dịch vụ khoa học GREECO">
-        <div class="container">
+        <div class="de-overlay" style="background: rgba(30, 31, 34, 0.90);"></div>
+        <div class="container relative z-2">
             <div class="row g-4">
                 <div class="row g-4 mb-3 align-items-center justify-content-center">
                     <div class="col-xl-6 text-center">
                         <div class="subtitle wow fadeInUp">Dịch vụ khoa học</div>
-                        <h2 class="text-uppercase wow fadeInUp" data-wow-delay=".2s">Dịch vụ & <span class="id-color-2">Tư vấn</span></h2>
+                        <h2 class="text-uppercase wow fadeInUp" data-wow-delay=".2s">Dịch vụ & <span class="id-color">Tư vấn</span></h2>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center g-lg-4 gx-lg-5 wow fadeInUp">
                 <div class="col-xl-8">
-                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
+                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom border-white-op-1 align-items-center">
                         <div>
-                            <h5 class="mb-1">Tư vấn Kiểm kê Khí nhà kính</h5>
-                            Xác định phát thải carbon cấp cơ sở và xây dựng báo cáo giảm phát thải.
+                            <h5 class="mb-1 text-white">Tư vấn Kiểm kê Khí nhà kính</h5>
+                            <p class="mb-0 op-7 fs-14">Xác định phát thải carbon cấp cơ sở và xây dựng báo cáo giảm phát thải.</p>
                         </div>
                         <div class="text-end">
-                            <h5 class="fw-500 mb-1">Liên hệ</h5>
+                            <h5 class="fw-500 mb-0"><a href="{{ route('contact') }}" class="id-color text-decoration-none">Liên hệ <i class="fa-solid fa-arrow-right ms-1 fs-12"></i></a></h5>
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
+                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom border-white-op-1 align-items-center">
                         <div>
-                            <h5 class="mb-1">Đánh giá tác động môi trường (ĐTM)</h5>
-                            Khảo sát hiện trạng và thực hiện hồ sơ pháp lý ĐTM toàn diện.
+                            <h5 class="mb-1 text-white">Đánh giá tác động môi trường (ĐTM)</h5>
+                            <p class="mb-0 op-7 fs-14">Khảo sát hiện trạng và thực hiện hồ sơ pháp lý ĐTM toàn diện.</p>
                         </div>
                         <div class="text-end">
-                            <h5 class="fw-500 mb-1">Liên hệ</h5>
+                            <h5 class="fw-500 mb-0"><a href="{{ route('contact') }}" class="id-color text-decoration-none">Liên hệ <i class="fa-solid fa-arrow-right ms-1 fs-12"></i></a></h5>
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
+                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom border-white-op-1 align-items-center">
                         <div>
-                            <h5 class="mb-1">Tư vấn dự án Tín chỉ Carbon</h5>
-                            Khảo sát khả thi, đăng ký và theo dõi phát hành chứng chỉ carbon.
+                            <h5 class="mb-1 text-white">Tư vấn dự án Tín chỉ Carbon</h5>
+                            <p class="mb-0 op-7 fs-14">Khảo sát khả thi, đăng ký và theo dõi phát hành chứng chỉ carbon.</p>
                         </div>
                         <div class="text-end">
-                            <h5 class="fw-500 mb-1">Liên hệ</h5>
+                            <h5 class="fw-500 mb-0"><a href="{{ route('contact') }}" class="id-color text-decoration-none">Liên hệ <i class="fa-solid fa-arrow-right ms-1 fs-12"></i></a></h5>
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
+                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom border-white-op-1 align-items-center">
                         <div>
-                            <h5 class="mb-1">Xây dựng Mô hình Kinh tế Tuần hoàn</h5>
-                            Tư vấn giải pháp giảm thiểu rác thải, tuần hoàn tài nguyên tối ưu.
+                            <h5 class="mb-1 text-white">Xây dựng Mô hình Kinh tế Tuần hoàn</h5>
+                            <p class="mb-0 op-7 fs-14">Tư vấn giải pháp giảm thiểu rác thải, tuần hoàn tài nguyên tối ưu.</p>
                         </div>
                         <div class="text-end">
-                            <h5 class="fw-500 mb-1">Liên hệ</h5>
+                            <h5 class="fw-500 mb-0"><a href="{{ route('contact') }}" class="id-color text-decoration-none">Liên hệ <i class="fa-solid fa-arrow-right ms-1 fs-12"></i></a></h5>
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
+                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom border-white-op-1 align-items-center">
                         <div>
-                            <h5 class="mb-1">Đào tạo & Chứng nhận ESG</h5>
-                            Nâng cao năng lực và cấp chứng nhận ESG thực tiễn cho nhân sự.
+                            <h5 class="mb-1 text-white">Đào tạo & Chứng nhận ESG</h5>
+                            <p class="mb-0 op-7 fs-14">Nâng cao năng lực và cấp chứng nhận ESG thực tiễn cho nhân sự.</p>
                         </div>
                         <div class="text-end">
-                            <h5 class="fw-500 mb-1">Liên hệ</h5>
+                            <h5 class="fw-500 mb-0"><a href="{{ route('contact') }}" class="id-color text-decoration-none">Liên hệ <i class="fa-solid fa-arrow-right ms-1 fs-12"></i></a></h5>
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
+                    <div class="d-flex justify-content-between pb-3 mb-3 border-bottom border-white-op-1 align-items-center">
                         <div>
-                            <h5 class="mb-1">Chuyển giao công nghệ xử lý nước & rác</h5>
-                            Giải pháp kỹ thuật hiện đại cho xử lý nước thải và rác thải hữu cơ.
+                            <h5 class="mb-1 text-white">Chuyển giao công nghệ xử lý nước & rác</h5>
+                            <p class="mb-0 op-7 fs-14">Giải pháp kỹ thuật hiện đại cho xử lý nước thải và rác thải hữu cơ.</p>
                         </div>
                         <div class="text-end">
-                            <h5 class="fw-500 mb-1">Liên hệ</h5>
+                            <h5 class="fw-500 mb-0"><a href="{{ route('contact') }}" class="id-color text-decoration-none">Liên hệ <i class="fa-solid fa-arrow-right ms-1 fs-12"></i></a></h5>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-12 text-center">
-                    <a class="btn-main wow fadeInUp" href="{{ route('services.index') }}">Xem thêm dịch vụ</a>
+                    <a class="btn-main wow fadeInUp" href="{{ route('services.tu-van') }}">Xem thêm dịch vụ</a>
                 </div>
 
             </div>
@@ -434,7 +405,7 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color text-light padding30 rounded-1">
-                        <img src="{{ asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">01</div>
                         <div>
                             <h4>Đội ngũ chuyên gia đầu ngành</h4>
@@ -446,7 +417,7 @@
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color text-light padding30 rounded-1">
-                        <img src="{{ asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">02</div>
                         <div>
                             <h4>Giải pháp thiết thực & Tối ưu</h4>
@@ -458,7 +429,7 @@
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color text-light padding30 rounded-1">
-                        <img src="{{ asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">03</div>
                         <div>
                             <h4>Dịch vụ khoa học toàn diện</h4>
@@ -470,7 +441,7 @@
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color-2 text-light padding30 rounded-1">
-                        <img src="{{ asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">04</div>
                         <div>
                             <h4>Bảo chứng chất lượng khoa học</h4>
@@ -482,7 +453,7 @@
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color-2 text-light padding30 rounded-1">
-                        <img src="{{ asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">05</div>
                         <div>
                             <h4>Mô hình phát triển bền vững</h4>
@@ -494,7 +465,7 @@
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color-2 text-light padding30 rounded-1">
-                        <img src="{{ asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">06</div>
                         <div>
                             <h4>Cam kết chất lượng</h4>
@@ -507,8 +478,9 @@
         </div>
     </section>
 
-    <section class="jarallax">
+    <section class="jarallax text-light relative">
         <img src="{{ asset('assets/images/background/4.webp') }}" class="jarallax-img" alt="Đánh giá đối tác GREECO">
+        <div class="de-overlay"></div>
         <div class="container relative z-2">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
@@ -526,8 +498,8 @@
         </div>
     </section>
 
-    <section class="px-4">
-        <div class="container-fluid">
+    <section>
+        <div class="container">
             <div class="row g-4 align-items-center justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="subtitle wow fadeInUp">Dự án & Công trình</div>
@@ -607,6 +579,42 @@
             </div>
         </div>
     </section>
+
+    <!-- Dynamic Partners Logos Marquee -->
+    @if($partners->isNotEmpty())
+        <section class="py-5 bg-white border-top border-bottom partners-marquee-section">
+            <div class="container-fluid px-0">
+                <div class="text-center mb-4 wow fadeInUp px-3">
+                    <div class="subtitle">Đối tác của Greeco</div>
+                    <h4 class="text-uppercase id-color-2 wow fadeInUp" data-wow-delay=".2s">Đối tác & Khách hàng đồng hành</h4>
+                </div>
+                <div class="partners-track-wrapper">
+                    {{-- Render 3 lần để tạo vòng lặp liền mạch dù ít hay nhiều partners --}}
+                    @foreach([1, 2, 3] as $repeat)
+                        <div class="partners-track" aria-hidden="{{ $repeat > 1 ? 'true' : 'false' }}">
+                            @foreach($partners as $partner)
+                                <div class="partner-item">
+                                    @if($partner->website_url)
+                                        <a href="{{ $partner->website_url }}" target="_blank" rel="noopener noreferrer"
+                                            class="partner-logo-link" aria-label="Truy cập website {{ $partner->name }}">
+                                    @else
+                                        <div class="partner-logo-link">
+                                    @endif
+                                            <img src="{{ asset('storage/' . $partner->logo) }}" class="partner-logo-img"
+                                                alt="{{ $partner->name }}" title="{{ $partner->name }}" loading="lazy">
+                                    @if($partner->website_url)
+                                        </a>
+                                    @else
+                                        </div>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
 
     </div>
 @endsection

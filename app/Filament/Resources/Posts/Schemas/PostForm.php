@@ -10,6 +10,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Schemas\Schema;
@@ -42,11 +43,18 @@ class PostForm
                                 Textarea::make('excerpt')
                                     ->label('Mô tả ngắn/Trích dẫn')
                                     ->rows(3),
+                                TagsInput::make('tags')
+                                    ->label('Thẻ (Tags)')
+                                    ->placeholder('Nhập tag và ấn Enter')
+                                    ->columnSpanFull(),
                             ]),
                         Tab::make('Nội dung')
                             ->schema([
                                 RichEditor::make('content')
                                     ->label('Nội dung bài viết')
+                                    ->fileAttachmentsDisk('public')
+                                    ->fileAttachmentsDirectory('posts/attachments')
+                                    ->resizableImages()
                                     ->columnSpanFull(),
                             ]),
                         Tab::make('Hình ảnh')
@@ -54,10 +62,12 @@ class PostForm
                                 FileUpload::make('thumbnail')
                                     ->label('Ảnh đại diện')
                                     ->image()
+                                    ->disk('public')
                                     ->directory('posts'),
                                 FileUpload::make('og_image')
                                     ->label('Ảnh chia sẻ Facebook/Zalo')
                                     ->image()
+                                    ->disk('public')
                                     ->directory('seo/og-images'),
                             ]),
                         Tab::make('SEO')

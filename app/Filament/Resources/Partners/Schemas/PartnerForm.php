@@ -27,6 +27,7 @@ class PartnerForm
                         FileUpload::make('logo')
                             ->label('Logo đối tác')
                             ->image()
+                            ->disk('public')
                             ->directory('partners'),
                         Toggle::make('is_active')
                             ->label('Hiển thị')

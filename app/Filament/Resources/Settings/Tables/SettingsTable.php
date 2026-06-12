@@ -36,7 +36,9 @@ class SettingsTable
                 TextColumn::make('value')
                     ->label('Giá trị')
                     ->limit(50)
-                    ->searchable(),
+                    ->searchable()
+                    ->html()
+                    ->state(fn ($record) => $record->type === 'image' && $record->value ? '<img src="'.asset('storage/'.$record->value).'" style="max-height: 35px; max-width: 100px; border-radius: 4px; object-fit: cover;"/>' : e($record->value)),
                 TextColumn::make('type')
                     ->label('Kiểu')
                     ->searchable(),

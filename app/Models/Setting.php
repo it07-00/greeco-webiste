@@ -15,4 +15,13 @@ class Setting extends Model
         'type',
         'group',
     ];
+
+    public static function getValue(string $key, $default = null)
+    {
+        static $settings = null;
+        if ($settings === null) {
+            $settings = self::pluck('value', 'key');
+        }
+        return $settings->get($key) ?? $default;
+    }
 }

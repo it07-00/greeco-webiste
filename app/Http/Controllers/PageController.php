@@ -23,4 +23,15 @@ class PageController extends Controller
 
         return view('pages.show', compact('page'));
     }
+
+    public function library()
+    {
+        $documents = \App\Models\Document::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('pages.library', compact('documents'));
+    }
 }

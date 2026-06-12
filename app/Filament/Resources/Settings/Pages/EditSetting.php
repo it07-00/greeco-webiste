@@ -16,4 +16,33 @@ class EditSetting extends EditRecord
             DeleteAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        $type = $data['type'] ?? 'text';
+        
+        $data['text_value'] = ($type === 'text') ? $data['value'] : null;
+        $data['textarea_value'] = ($type === 'textarea') ? $data['value'] : null;
+        $data['editor_value'] = ($type === 'editor') ? $data['value'] : null;
+        $data['image_value'] = ($type === 'image') ? $data['value'] : null;
+        $data['file_value'] = ($type === 'file') ? $data['value'] : null;
+
+        return $data;
+    }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $type = $data['type'] ?? 'text';
+        
+        $data['value'] = match ($type) {
+            'text' => $data['text_value'] ?? null,
+            'textarea' => $data['textarea_value'] ?? null,
+            'editor' => $data['editor_value'] ?? null,
+            'image' => is_array($data['image_value'] ?? null) ? reset($data['image_value']) : ($data['image_value'] ?? null),
+            'file' => is_array($data['file_value'] ?? null) ? reset($data['file_value']) : ($data['file_value'] ?? null),
+            default => null,
+        };
+
+        return $data;
+    }
 }

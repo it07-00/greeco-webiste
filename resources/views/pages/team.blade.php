@@ -17,8 +17,7 @@
     <div class="no-bottom no-top" id="content">
         <div id="top"></div>
 
-        <section id="subheader" class="relative jarallax text-light">
-            <img src="{{ asset('assets/images/background/8.webp') }}" class="jarallax-img" alt="Hội đồng khoa học GREECO">
+        <section id="subheader" class="relative">
             <div class="container relative z-index-1000">
                 <div class="row">
                     <div class="col-lg-6">
@@ -31,9 +30,6 @@
                     </div>
                 </div>
             </div>
-            <img src="{{ asset('assets/images/logo-wm.webp') }}" class="abs end-0 bottom-0 z-2 w-20" alt="GREECO watermark">
-            <div class="de-gradient-edge-top dark"></div>
-            <div class="de-overlay"></div>
         </section>
 
         <section>
@@ -49,7 +45,7 @@
                                         <p class="mb-0">Chủ tịch Hội đồng Khoa học</p>                                        
                                     </div>
                                     <div class="text-end">
-                                        <a href="https://www.facebook.com/greecoofficial?locale=vi_VN"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
+                                        <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +64,7 @@
                                         <p class="mb-0">Phó Viện trưởng / Chuyên gia ESG</p>                                        
                                     </div>
                                     <div class="text-end">
-                                        <a href="https://www.facebook.com/greecoofficial?locale=vi_VN"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
+                                        <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +83,7 @@
                                         <p class="mb-0">Trưởng phòng Nghiên cứu Công nghệ Xanh</p>                                        
                                     </div>
                                     <div class="text-end">
-                                        <a href="https://www.facebook.com/greecoofficial?locale=vi_VN"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
+                                        <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +102,7 @@
                                         <p class="mb-0">Chuyên gia Đánh giá Carbon & Khí hậu</p>                                        
                                     </div>
                                     <div class="text-end">
-                                        <a href="https://www.facebook.com/greecoofficial?locale=vi_VN"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
+                                        <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +121,7 @@
                                         <p class="mb-0">Chuyên viên Chuyển giao Công nghệ</p>                                        
                                     </div>
                                     <div class="text-end">
-                                        <a href="https://www.facebook.com/greecoofficial?locale=vi_VN"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
+                                        <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +140,7 @@
                                         <p class="mb-0">Thư ký Hội đồng Chuyên gia</p>                                        
                                     </div>
                                     <div class="text-end">
-                                        <a href="https://www.facebook.com/greecoofficial?locale=vi_VN"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
+                                        <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i class="fa-brands fa-facebook-f fs-24 id-color bg-light w-40px h-40px pt-2 circle text-center"></i></a>
                                     </div>
                                 </div>
                             </div>

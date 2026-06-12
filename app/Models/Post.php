@@ -19,6 +19,7 @@ class Post extends Model
         'meta_title',
         'meta_description',
         'meta_keywords',
+        'tags',
         'canonical_url',
         'og_image',
         'is_featured',
@@ -32,6 +33,7 @@ class Post extends Model
         'is_indexable' => 'boolean',
         'is_published' => 'boolean',
         'published_at' => 'datetime',
+        'tags' => 'array',
     ];
 
     public function category()

@@ -24,8 +24,7 @@
     <div class="no-bottom no-top" id="content">
         <div id="top"></div>
 
-        <section id="subheader" class="relative jarallax text-light">
-            <img src="{{ asset('assets/images/background/3.webp') }}" class="jarallax-img" alt="Subheader projects background">
+        <section id="subheader" class="relative">
             <div class="container relative z-index-1000">
                 <div class="row">
                     <div class="col-lg-6">
@@ -39,8 +38,6 @@
                     </div>
                 </div>
             </div>
-            <img src="{{ asset('assets/images/logo-wm.webp') }}" class="abs end-0 bottom-0 z-2 w-20" alt="GREECO logo watermark">
-            <div class="de-overlay"></div>
         </section>
 
         <section>
@@ -51,7 +48,7 @@
                             <a href="{{ route('services.dao-tao') }}" class="bg-light d-block p-3 px-4 rounded-10px mb-3"><h4 class="mb-0">Đào tạo & Bồi dưỡng</h4></a>
                             <a href="{{ route('services.tu-van') }}" class="bg-light d-block p-3 px-4 rounded-10px mb-3"><h4 class="mb-0">Dịch vụ Tư vấn</h4></a>
                             <a href="{{ route('services.du-an') }}" class="bg-color text-light d-block p-3 px-4 rounded-10px mb-3 relative"><h4 class="mb-0">Phát triển Dự án</h4><i class="icofont-long-arrow-right absolute abs-middle fs-24 end-20px"></i></a>
-                            <a href="{{ route('services.nghien-cuu') }}" class="bg-light d-block p-3 px-4 rounded-10px mb-3"><h4 class="mb-0">Nghiên cứu & Chuyển giao</h4></a>
+                            <a href="{{ route('services.nghien-cuu') }}" class="bg-light d-block p-3 px-4 rounded-10px mb-3"><h4 class="mb-0">Nghiên cứu và Chuyển giao Công nghệ</h4></a>
                             <a href="{{ route('services.hoi-thao') }}" class="bg-light d-block p-3 px-4 rounded-10px mb-3"><h4 class="mb-0">Hội thảo & Truyền thông</h4></a>
                         </div>
                     </div>

@@ -28,7 +28,7 @@ class MainServiceCategories
         ],
         [
             'slug' => 'nghien-cuu-chuyen-giao',
-            'name' => 'Nghiên cứu & Chuyển giao',
+            'name' => 'Nghiên cứu và Chuyển giao Công nghệ',
             'description' => 'Nghiên cứu ứng dụng và chuyển giao công nghệ xanh',
             'route' => 'services.nghien-cuu',
         ],

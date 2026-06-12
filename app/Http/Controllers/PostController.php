@@ -18,7 +18,8 @@ class PostController extends Controller
 
         if ($request->filled('tag')) {
             $query->where(function($q) use ($activeTag) {
-                $q->where('title', 'like', '%' . $activeTag . '%')
+                $q->whereJsonContains('tags', $activeTag)
+                  ->orWhere('title', 'like', '%' . $activeTag . '%')
                   ->orWhere('excerpt', 'like', '%' . $activeTag . '%')
                   ->orWhere('content', 'like', '%' . $activeTag . '%')
                   ->orWhere('meta_keywords', 'like', '%' . $activeTag . '%');

@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\Settings\Schemas;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -37,14 +39,54 @@ class SettingForm
                                 'text' => 'Văn bản ngắn (Text)',
                                 'textarea' => 'Văn bản dài (Textarea)',
                                 'editor' => 'Trình soạn thảo (Rich Text)',
+                                'image' => 'Hình ảnh (Image)',
+                                'file' => 'Tệp tin (File / PDF)',
                             ])
                             ->default('text')
-                            ->required(),
-                        Textarea::make('value')
+                            ->required()
+                            ->live(),
+
+                        TextInput::make('value')
+                            ->hidden()
+                            ->dehydrated(true),
+
+                        TextInput::make('text_value')
                             ->label('Giá trị')
+                            ->visible(fn (callable $get) => in_array($get('type'), ['text', null, '']))
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+
+                        Textarea::make('textarea_value')
+                            ->label('Giá trị')
+                            ->visible(fn (callable $get) => $get('type') === 'textarea')
+                            ->dehydrated(false)
                             ->rows(5)
                             ->columnSpanFull(),
-                    ])
+
+                        RichEditor::make('editor_value')
+                            ->label('Giá trị')
+                            ->visible(fn (callable $get) => $get('type') === 'editor')
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+
+                        FileUpload::make('image_value')
+                            ->label('Hình ảnh')
+                            ->image()
+                            ->disk('public')
+                            ->directory('settings')
+                            ->visible(fn (callable $get) => $get('type') === 'image')
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+
+                        FileUpload::make('file_value')
+                            ->label('Tệp tin (PDF, Doc, v.v.)')
+                            ->disk('public')
+                            ->directory('settings')
+                            ->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])
+                            ->visible(fn (callable $get) => $get('type') === 'file')
+                            ->dehydrated(false)
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 }

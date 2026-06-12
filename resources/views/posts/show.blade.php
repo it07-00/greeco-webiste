@@ -29,8 +29,7 @@
     <div class="no-bottom no-top" id="content">
         <div id="top"></div>
 
-        <section id="subheader" class="relative jarallax text-light">
-            <img src="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('assets/images/background/8.webp') }}" class="jarallax-img" alt="{{ $post->title }}">
+        <section id="subheader" class="relative">
             <div class="container relative z-index-1000">
                 <div class="row">
                     <div class="col-lg-12">
@@ -39,13 +38,10 @@
                             <li><a href="{{ route('posts.index') }}">Tin tức</a></li>
                             <li class="active">Tin tức chi tiết</li>
                         </ul>
-                        <h1 class="text-uppercase">{{ $post->title }}</h1>
+                        <h1 class="text-uppercase">Tin tức</h1>
                     </div>
                 </div>
             </div>
-            <img src="{{ asset('assets/images/logo-wm.webp') }}" class="abs end-0 bottom-0 z-2 w-20" alt="GREECO watermark">
-            <div class="de-gradient-edge-top dark"></div>
-            <div class="de-overlay"></div>
         </section>
 
         <section>
@@ -53,9 +49,33 @@
                 <div class="row gx-5">
                     <div class="col-lg-8">
                         <div class="blog-read">
+                            <h1 class="text-dark fs-36 fw-700 lh-1-3 mb-3">{{ $post->title }}</h1>
+                            @if($post->published_at)
+                                <div class="post-meta mb-3 text-muted fs-14">
+                                    <i class="fa-regular fa-calendar-days me-2"></i>{{ $post->published_at->format('d/m/Y') }}
+                                    @if($post->category)
+                                        <span class="mx-2">|</span><i class="fa-regular fa-folder-open me-2"></i>{{ $post->category->name }}
+                                    @endif
+                                </div>
+                            @endif
+                            <hr class="border-dashed my-4">
+                            
+                            @if($post->excerpt)
+                                <p class="lead fw-600 text-dark fs-18 mb-4">{{ $post->excerpt }}</p>
+                            @endif
+
                             <div class="post-text">
                                 {!! $post->content !!}
                             </div>
+                            
+                            @if(!empty($post->tags))
+                                <div class="post-tags mt-4">
+                                    <span class="fw-bold me-2"><i class="fa fa-tags me-1"></i>Thẻ:</span>
+                                    @foreach($post->tags as $tag)
+                                        <a href="{{ route('posts.index', ['tag' => $tag]) }}" class="badge bg-success text-white text-decoration-none me-1 py-2 px-3">{{ $tag }}</a>
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
                     </div>
 

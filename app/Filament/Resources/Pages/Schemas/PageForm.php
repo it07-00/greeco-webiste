@@ -40,6 +40,9 @@ class PageForm
                             ->schema([
                                 RichEditor::make('content')
                                     ->label('Nội dung chi tiết')
+                                    ->fileAttachmentsDisk('public')
+                                    ->fileAttachmentsDirectory('pages/attachments')
+                                    ->resizableImages()
                                     ->columnSpanFull(),
                             ]),
                         Tab::make('Hình ảnh')
@@ -47,10 +50,12 @@ class PageForm
                                 FileUpload::make('thumbnail')
                                     ->label('Ảnh đại diện')
                                     ->image()
+                                    ->disk('public')
                                     ->directory('pages'),
                                 FileUpload::make('og_image')
                                     ->label('Ảnh chia sẻ Facebook/Zalo (og:image)')
                                     ->image()
+                                    ->disk('public')
                                     ->directory('seo/og-images'),
                             ]),
                         Tab::make('SEO')

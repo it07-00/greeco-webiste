@@ -16,7 +16,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/gioi-thieu', [PageController::class, 'about'])->name('about');
 Route::view('/ban-lanh-dao-va-chuyen-gia', 'pages.team')->name('team');
 Route::view('/thu-vien-anh', 'pages.gallery')->name('gallery');
-Route::view('/thu-vien', 'pages.library')->name('library');
+Route::get('/thu-vien', [PageController::class, 'library'])->name('library');
 
 // Bảng giá & Gói dịch vụ
 Route::view('/bang-gia', 'pages.price-list')->name('price-list');

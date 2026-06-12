@@ -17,8 +17,7 @@
     <div class="no-bottom no-top" id="content">
         <div id="top"></div>
 
-        <section id="subheader" class="relative jarallax text-light">
-            <img src="{{ asset('assets/images/background/8.webp') }}" class="jarallax-img" alt="Thư viện ảnh GREECO">
+        <section id="subheader" class="relative">
             <div class="container relative z-index-1000">
                 <div class="row">
                     <div class="col-lg-6">
@@ -31,9 +30,6 @@
                     </div>
                 </div>
             </div>
-            <img src="{{ asset('assets/images/logo-wm.webp') }}" class="abs end-0 bottom-0 z-2 w-20" alt="GREECO watermark">
-            <div class="de-gradient-edge-top dark"></div>
-            <div class="de-overlay"></div>
         </section>
 
         <section class="relative">

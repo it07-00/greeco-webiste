@@ -37,7 +37,6 @@
                     </div>
                 </div>
             </div>
-            <img src="{{ asset('assets/images/logo-wm.webp') }}" class="abs end-0 bottom-0 z-2 w-20" alt="GREECO watermark">
         </section>
 
         <!-- Project Hero Image -->

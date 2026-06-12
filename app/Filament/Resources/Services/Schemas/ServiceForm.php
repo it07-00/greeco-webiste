@@ -49,6 +49,9 @@ class ServiceForm
                             ->schema([
                                 RichEditor::make('content')
                                     ->label('Nội dung chi tiết')
+                                    ->fileAttachmentsDisk('public')
+                                    ->fileAttachmentsDirectory('services/attachments')
+                                    ->resizableImages()
                                     ->columnSpanFull(),
                             ]),
                         Tab::make('Hình ảnh')
@@ -56,10 +59,12 @@ class ServiceForm
                                 FileUpload::make('thumbnail')
                                     ->label('Ảnh đại diện')
                                     ->image()
+                                    ->disk('public')
                                     ->directory('services'),
                                 FileUpload::make('og_image')
                                     ->label('Ảnh chia sẻ Facebook/Zalo')
                                     ->image()
+                                    ->disk('public')
                                     ->directory('seo/og-images'),
                             ]),
                         Tab::make('SEO')

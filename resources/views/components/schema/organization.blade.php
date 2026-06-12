@@ -5,20 +5,20 @@
     "name": "Viện Nghiên cứu và Phát triển Kinh tế Xanh",
     "alternateName": "GREECO Institute",
     "url": "{{ url('/') }}",
-    "logo": "{{ asset('assets/images/logo-greeco.png') }}",
+    "logo": "{{ setting('logo_dark') ? asset('storage/' . setting('logo_dark')) : asset('assets/images/logo-greeco.png') }}",
     "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+84936996390",
+        "telephone": "{{ setting('phone', '09369 96390') }}",
         "contactType": "customer service",
         "areaServed": "VN",
         "availableLanguage": ["Vietnamese"]
     },
     "address": {
         "@type": "PostalAddress",
-        "streetAddress": "150 Đường 38-CL, Phường Cát Lái",
+        "streetAddress": "{{ setting('address', '150 Đường 38-CL, Phường Cát Lái, TP. HCM') }}",
         "addressLocality": "TP. Hồ Chí Minh",
         "addressCountry": "VN"
     },
-    "email": "info@greeco.vn"
+    "email": "{{ setting('email', 'info@greeco.vn') }}"
 }
 </script>

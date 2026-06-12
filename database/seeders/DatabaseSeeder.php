@@ -50,22 +50,14 @@ class DatabaseSeeder extends Seeder
 
         $bannersData = [
             [
-                'title' => null,
-                'subtitle' => null,
-                'description' => null,
                 'image' => 'banners/5.png',
-                'button_text' => null,
-                'button_url' => null,
+                'url' => null,
                 'sort_order' => 1,
                 'is_active' => true,
             ],
             [
-                'title' => null,
-                'subtitle' => null,
-                'description' => null,
                 'image' => 'banners/6.png',
-                'button_text' => null,
-                'button_url' => null,
+                'url' => null,
                 'sort_order' => 2,
                 'is_active' => true,
             ],
@@ -154,7 +146,7 @@ class DatabaseSeeder extends Seeder
             ['slug' => 'dao-tao-boi-duong', 'name' => 'Đào tạo & Bồi dưỡng', 'description' => 'Các khóa học đào tạo, bồi dưỡng nâng cao năng lực doanh nghiệp', 'sort_order' => 1, 'is_active' => true],
             ['slug' => 'dich-vu-tu-van', 'name' => 'Dịch vụ Tư vấn', 'description' => 'Các dịch vụ tư vấn phát triển bền vững và giảm phát thải', 'sort_order' => 2, 'is_active' => true],
             ['slug' => 'phat-trien-du-an', 'name' => 'Phát triển Dự án', 'description' => 'Phát triển dự án giảm phát thải carbon và tín chỉ nhựa', 'sort_order' => 3, 'is_active' => true],
-            ['slug' => 'nghien-cuu-chuyen-giao', 'name' => 'Nghiên cứu & Chuyển giao', 'description' => 'Nghiên cứu ứng dụng và chuyển giao công nghệ xanh', 'sort_order' => 4, 'is_active' => true],
+            ['slug' => 'nghien-cuu-chuyen-giao', 'name' => 'Nghiên cứu và Chuyển giao Công nghệ', 'description' => 'Nghiên cứu ứng dụng và chuyển giao công nghệ xanh', 'sort_order' => 4, 'is_active' => true],
             ['slug' => 'hoi-thao-truyen-thong', 'name' => 'Hội thảo & Truyền thông', 'description' => 'Tổ chức hội thảo khoa học và truyền thông Net Zero', 'sort_order' => 5, 'is_active' => true],
             ['slug' => 'thu-vien-ho-so', 'name' => 'Thư viện & Hồ sơ', 'description' => 'Hồ sơ năng lực và hệ thống văn bản pháp luật môi trường', 'sort_order' => 6, 'is_active' => true],
         ];
@@ -535,7 +527,17 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
+        $tagsMapping = [
+            'dinh-huong-thuc-day-kinh-te-tuan-hoan-tai-viet-nam' => ['Kinh tế xanh', 'Kinh tế tuần hoàn', 'Tái chế'],
+            'chuyen-dich-xanh-va-co-hoi-cho-doanh-nghiep-viet-huong-toi-net-zero' => ['Net Zero', 'ESG', 'Chuyển đổi xanh'],
+            'vai-tro-cua-tin-chi-carbon-trong-cuoc-chien-chong-bien-doi-khi-hau' => ['Carbon', 'Tín chỉ carbon', 'Biến đổi khí hậu'],
+            'bao-cao-dtm-va-cac-diem-moi-trong-luat-bao-ve-moi-truong' => ['ĐTM', 'Môi trường', 'Pháp luật'],
+            'ung-dung-nang-luong-tai-tao-va-cong-nghe-tiet-kiem-dien-trong-san-xuat' => ['Năng lượng tái tạo', 'Tiết kiệm điện'],
+            'esg-thuoc-do-nang-luc-canh-tranh-toan-cau-moi-cua-doanh-nghiep' => ['ESG', 'Môi trường', 'Quản trị'],
+        ];
+
         foreach ($postsData as $p) {
+            $p['tags'] = $tagsMapping[$p['slug']] ?? [];
             Post::query()->updateOrCreate(['slug' => $p['slug']], $p);
         }
 
@@ -691,6 +693,37 @@ class DatabaseSeeder extends Seeder
         }
 
         // 11. Seed Website Settings (At least 6 records)
+        $storageSettingsDir = storage_path('app/public/settings');
+        if (!file_exists($storageSettingsDir)) {
+            mkdir($storageSettingsDir, 0755, true);
+        }
+
+        $filesToCopy = [
+            ['src' => 'logo-icon.webp', 'dest' => 'favicon.webp'],
+            ['src' => 'logo-text-white-cropped.png', 'dest' => 'logo_light.png'],
+            ['src' => 'logo-text-cropped.png', 'dest' => 'logo_dark.png'],
+            ['src' => 'logo-icon.webp', 'dest' => 'logo_icon.webp'],
+            ['src' => 'logo-wm.webp', 'dest' => 'logo_wm.webp'],
+            ['src' => 'icons/tree.png', 'dest' => 'icon_journey_tree.png'],
+            ['src' => 'icons/happy.png', 'dest' => 'icon_journey_happy.png'],
+            ['src' => 'blog/1.webp', 'dest' => 'contact_image.webp'],
+        ];
+
+        foreach ($filesToCopy as $file) {
+            $srcPath = public_path("assets/images/{$file['src']}");
+            $destPath = "{$storageSettingsDir}/{$file['dest']}";
+            if (file_exists($srcPath) && !file_exists($destPath)) {
+                copy($srcPath, $destPath);
+            }
+        }
+
+        // Copy capability profile PDF to settings storage
+        $pdfSrc = public_path('assets/docs/GREECO_Capability_Profile.pdf');
+        $pdfDest = "{$storageSettingsDir}/GREECO_Capability_Profile.pdf";
+        if (file_exists($pdfSrc) && !file_exists($pdfDest)) {
+            copy($pdfSrc, $pdfDest);
+        }
+
         $settingsData = [
             ['key' => 'site_name', 'value' => 'Viện Nghiên cứu và Phát triển Kinh tế Xanh - GREECO', 'type' => 'text', 'group' => 'general'],
             ['key' => 'phone', 'value' => '09369 96390', 'type' => 'text', 'group' => 'contact'],
@@ -698,6 +731,22 @@ class DatabaseSeeder extends Seeder
             ['key' => 'address', 'value' => '150 Đường 38-CL, Phường Cát Lái, TP. HCM', 'type' => 'text', 'group' => 'contact'],
             ['key' => 'work_hours', 'value' => 'Thứ 2 - Thứ 7: 08:00 - 17:00', 'type' => 'text', 'group' => 'contact'],
             ['key' => 'facebook_url', 'value' => 'https://www.facebook.com/greecoofficial?locale=vi_VN', 'type' => 'text', 'group' => 'social'],
+            ['key' => 'twitter_url', 'value' => '#', 'type' => 'text', 'group' => 'social'],
+            ['key' => 'youtube_url', 'value' => '#', 'type' => 'text', 'group' => 'social'],
+            ['key' => 'pinterest_url', 'value' => '#', 'type' => 'text', 'group' => 'social'],
+            ['key' => 'instagram_url', 'value' => '#', 'type' => 'text', 'group' => 'social'],
+            ['key' => 'whatsapp_url', 'value' => '#', 'type' => 'text', 'group' => 'social'],
+            ['key' => 'contact_image', 'value' => 'settings/contact_image.webp', 'type' => 'image', 'group' => 'contact'],
+            ['key' => 'favicon', 'value' => 'settings/favicon.webp', 'type' => 'image', 'group' => 'general'],
+            ['key' => 'logo_light', 'value' => 'settings/logo_light.png', 'type' => 'image', 'group' => 'general'],
+            ['key' => 'logo_dark', 'value' => 'settings/logo_dark.png', 'type' => 'image', 'group' => 'general'],
+            ['key' => 'logo_icon', 'value' => 'settings/logo_icon.webp', 'type' => 'image', 'group' => 'general'],
+            ['key' => 'logo_wm', 'value' => 'settings/logo_wm.webp', 'type' => 'image', 'group' => 'general'],
+            ['key' => 'icon_journey_tree', 'value' => 'settings/icon_journey_tree.png', 'type' => 'image', 'group' => 'general'],
+            ['key' => 'icon_journey_happy', 'value' => 'settings/icon_journey_happy.png', 'type' => 'image', 'group' => 'general'],
+            ['key' => 'capability_profile', 'value' => 'settings/GREECO_Capability_Profile.pdf', 'type' => 'file', 'group' => 'general'],
+            ['key' => 'zalo_url', 'value' => '', 'type' => 'text', 'group' => 'social'],
+            ['key' => 'messenger_url', 'value' => '', 'type' => 'text', 'group' => 'social'],
         ];
 
         foreach ($settingsData as $st) {
@@ -716,6 +765,68 @@ class DatabaseSeeder extends Seeder
 
         foreach ($redirectsData as $rd) {
             SeoRedirect::query()->updateOrCreate(['old_url' => $rd['old_url']], $rd);
+        }
+
+        // 13. Seed Legal Documents (At least 6 records)
+        $documentsData = [
+            [
+                'number' => 'Luật số 72/2020/QH14',
+                'type' => 'Luật Quốc hội',
+                'title' => 'Luật Bảo vệ Môi trường 2020',
+                'description' => 'Khung pháp lý cao nhất về bảo vệ môi trường, quản lý chất thải, đánh giá tác động môi trường, và các công cụ kinh tế môi trường.',
+                'link' => 'https://vanban.chinhphu.vn/?pageid=27160&docid=202616',
+                'sort_order' => 1,
+                'is_active' => true,
+            ],
+            [
+                'number' => 'Nghị định 06/2022/NĐ-CP',
+                'type' => 'Nghị định Chính phủ',
+                'title' => 'Nghị định quy định giảm nhẹ phát thải khí nhà kính và bảo vệ tầng ô-dôn',
+                'description' => 'Quy định chi tiết về hạn ngạch phát thải, tổ chức thị trường carbon trong nước, kiểm kê khí nhà kính (GHG) và hoạt động giảm nhẹ phát thải.',
+                'link' => 'https://vanban.chinhphu.vn/?pageid=27160&docid=205169',
+                'sort_order' => 2,
+                'is_active' => true,
+            ],
+            [
+                'number' => 'Quyết định 01/2022/QĐ-TTg',
+                'type' => 'Quyết định Thủ tướng',
+                'title' => 'Danh mục cơ sở phát thải khí nhà kính phải thực hiện kiểm kê khí nhà kính',
+                'description' => 'Danh sách chi tiết các nhà máy, cơ sở sản xuất thuộc ngành công thương, xây dựng, giao thông vận tải, tài nguyên môi trường bắt buộc thực hiện kiểm kê phát thải.',
+                'link' => 'https://vanban.chinhphu.vn/?pageid=27160&docid=205187',
+                'sort_order' => 3,
+                'is_active' => true,
+            ],
+            [
+                'number' => 'Thông tư 01/2022/TT-BTNMT',
+                'type' => 'Thông tư Bộ TN&MT',
+                'title' => 'Thông tư quy định chi tiết thi hành Luật BVMT về ứng phó với biến đổi khí hậu',
+                'description' => 'Hướng dẫn quy trình kỹ thuật kiểm kê khí nhà kính, xây dựng báo cáo giảm phát thải cấp cơ sở và thẩm định kết quả kiểm kê.',
+                'link' => 'https://vanban.chinhphu.vn/?pageid=27160&docid=205216',
+                'sort_order' => 4,
+                'is_active' => true,
+            ],
+            [
+                'number' => 'Nghị định 08/2022/NĐ-CP',
+                'type' => 'Nghị định Chính phủ',
+                'title' => 'Nghị định quy định chi tiết một số điều của Luật Bảo vệ Môi trường',
+                'description' => 'Quy định chi tiết về đánh giá tác động môi trường (ĐTM), giấy phép môi trường (GPMT), đăng ký môi trường, và trách nhiệm tái chế sản phẩm của nhà sản xuất (EPR).',
+                'link' => 'https://vanban.chinhphu.vn/?pageid=27160&docid=205168',
+                'sort_order' => 5,
+                'is_active' => true,
+            ],
+            [
+                'number' => 'Khung báo cáo ESG & GRI',
+                'type' => 'Khung Tiêu chuẩn Quốc tế',
+                'title' => 'GRI Standards & Khung hướng dẫn báo cáo CBAM, EUDR',
+                'description' => 'Tài liệu hướng dẫn xây dựng báo cáo phát triển bền vững ESG của doanh nghiệp; quy chế điều chỉnh biên giới carbon (CBAM) phục vụ xuất khẩu sang EU và tiêu chuẩn chống phá rừng EUDR.',
+                'link' => '/dich-vu',
+                'sort_order' => 6,
+                'is_active' => true,
+            ],
+        ];
+
+        foreach ($documentsData as $doc) {
+            \App\Models\Document::query()->updateOrCreate(['number' => $doc['number']], $doc);
         }
     }
 }
