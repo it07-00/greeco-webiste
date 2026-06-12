@@ -75,10 +75,11 @@ class SettingForm
                             ->visible(fn (callable $get) => $get('type') === 'image')
                             ->columnSpanFull(),
  
-                         FileUpload::make('file_value')
+                        FileUpload::make('file_value')
                             ->label('Tệp tin (PDF, Doc, v.v.)')
                             ->disk('public')
                             ->directory('settings')
+                            ->maxSize(config('uploads.max_size_kb'))
                             ->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])
                             ->visible(fn (callable $get) => $get('type') === 'file')
                             ->columnSpanFull(),
