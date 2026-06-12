@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
         foreach (['5.png', '6.png'] as $file) {
             $src = public_path("assets/images/{$file}");
             $dest = "{$storageBannersDir}/{$file}";
-            if (file_exists($src) && !file_exists($dest)) {
+            if (file_exists($src)) {
                 copy($src, $dest);
             }
         }
@@ -248,7 +248,7 @@ class DatabaseSeeder extends Seeder
         for ($i = 1; $i <= 6; $i++) {
             $source = public_path("assets/images/blog/{$i}.webp");
             $dest = "{$storagePostsDir}/{$i}.webp";
-            if (file_exists($source) && !file_exists($dest)) {
+            if (file_exists($source)) {
                 copy($source, $dest);
             }
         }
@@ -712,7 +712,7 @@ class DatabaseSeeder extends Seeder
         foreach ($filesToCopy as $file) {
             $srcPath = public_path("assets/images/{$file['src']}");
             $destPath = "{$storageSettingsDir}/{$file['dest']}";
-            if (file_exists($srcPath) && !file_exists($destPath)) {
+            if (file_exists($srcPath)) {
                 copy($srcPath, $destPath);
             }
         }
@@ -720,7 +720,7 @@ class DatabaseSeeder extends Seeder
         // Copy capability profile PDF to settings storage
         $pdfSrc = public_path('assets/docs/GREECO_Capability_Profile.pdf');
         $pdfDest = "{$storageSettingsDir}/GREECO_Capability_Profile.pdf";
-        if (file_exists($pdfSrc) && !file_exists($pdfDest)) {
+        if (file_exists($pdfSrc)) {
             copy($pdfSrc, $pdfDest);
         }
 
