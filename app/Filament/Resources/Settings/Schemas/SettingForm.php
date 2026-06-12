@@ -69,6 +69,7 @@ class SettingForm
                          FileUpload::make('image_value')
                             ->label('Hình ảnh')
                             ->image()
+                            ->imageEditor()
                             ->disk('public')
                             ->directory('settings')
                             ->visible(fn (callable $get) => $get('type') === 'image')

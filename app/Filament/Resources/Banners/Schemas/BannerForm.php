@@ -20,6 +20,7 @@ class BannerForm
                         FileUpload::make('image')
                             ->label('Hình ảnh banner')
                             ->image()
+                            ->imageEditor()
                             ->disk('public')
                             ->directory('banners')
                             ->required(),

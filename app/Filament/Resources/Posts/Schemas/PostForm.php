@@ -62,11 +62,13 @@ class PostForm
                                 FileUpload::make('thumbnail')
                                     ->label('Ảnh đại diện')
                                     ->image()
+                                    ->imageEditor()
                                     ->disk('public')
                                     ->directory('posts'),
                                 FileUpload::make('og_image')
                                     ->label('Ảnh chia sẻ Facebook/Zalo')
                                     ->image()
+                                    ->imageEditor()
                                     ->disk('public')
                                     ->directory('seo/og-images'),
                             ]),

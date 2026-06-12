@@ -50,11 +50,13 @@ class PageForm
                                 FileUpload::make('thumbnail')
                                     ->label('Ảnh đại diện')
                                     ->image()
+                                    ->imageEditor()
                                     ->disk('public')
                                     ->directory('pages'),
                                 FileUpload::make('og_image')
                                     ->label('Ảnh chia sẻ Facebook/Zalo (og:image)')
                                     ->image()
+                                    ->imageEditor()
                                     ->disk('public')
                                     ->directory('seo/og-images'),
                             ]),
