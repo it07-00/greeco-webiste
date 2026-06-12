@@ -512,7 +512,7 @@
                 @if($featuredProjects->isNotEmpty())
                     @foreach($featuredProjects as $project)
                         <div class="col-lg-6">
-                            <div class="hover rounded-1 overflow-hidden relative text-light wow fadeInRight"
+                            <div class="hover project-card-custom rounded-1 overflow-hidden relative text-light wow fadeInRight"
                                 data-wow-delay="{{ ($loop->index % 2) * 0.3 }}s">
                                 <a href="{{ route('projects.show', $project) }}" class="abs w-100 h-100 z-5"></a>
                                 <img src="{{ $project->thumbnail ? asset('storage/' . $project->thumbnail) : asset('assets/images/projects/' . (($loop->index % 2) + 1) . '.jpg') }}"
@@ -546,7 +546,7 @@
                 @else
                     <!-- Fallback static projects -->
                     <div class="col-lg-6">
-                        <div class="hover rounded-1 overflow-hidden relative text-light wow fadeInRight" data-wow-delay=".3s">
+                        <div class="hover project-card-custom rounded-1 overflow-hidden relative text-light wow fadeInRight" data-wow-delay=".3s">
                             <a href="{{ route('projects.index') }}" class="abs w-100 h-100 z-5"></a>
                             <img src="{{ asset('assets/images/projects/1.jpg') }}" class="hover-scale-1-1 w-100"
                                 alt="Ứng dụng Kinh tế Tuần hoàn">

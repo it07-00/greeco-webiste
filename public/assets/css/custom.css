@@ -1619,3 +1619,24 @@ blockquote .blockquote-footer {
     }
 }
 
+
+/* ==========================================================================
+   7.7. Projects Section Image Layout Adjustments
+   ========================================================================== */
+.project-card-custom {
+    height: 380px !important;
+    width: 100% !important;
+}
+
+.project-card-custom img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .project-card-custom {
+        height: 280px !important;
+    }
+}
+
