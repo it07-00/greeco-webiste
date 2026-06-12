@@ -380,16 +380,30 @@ footer.footer-light .subfooter a:hover {
 }
 
 .footer-logo-text {
-    height: 110px !important;
+    height: auto !important;
+    max-height: 80px !important;
+    max-width: 100% !important;
     width: auto !important;
     object-fit: contain !important;
 }
 
-@media only screen and (max-width: 575px) {
-    .footer-logo-text {
-        height: 80px !important;
-    }
+/* Footer Map container */
+.footer-map-container {
+    width: 100% !important;
+    height: 300px !important;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    margin-top: 10px;
 }
+
+.footer-map-container iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+}
+
 
 /* Extra Logo Slideout Component (Used in widget/aside) */
 .extra-logo-container {
@@ -1448,3 +1462,26 @@ blockquote .blockquote-footer {
 .error-page-title {
     letter-spacing: 2px;
 }
+
+/* Contact Page Map */
+.contact-map-container {
+    width: 100% !important;
+    height: 450px !important;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+}
+
+.contact-map-container iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .contact-map-container {
+        height: 300px !important;
+    }
+}
+

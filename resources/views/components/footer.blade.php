@@ -2,24 +2,29 @@
 <footer class="footer-light">
     <div class="container relative z-2">
         <div class="row gx-5">
-            <div class="col-lg-4 col-sm-6">
+            <div class="col-lg-3 col-sm-12">
                 <div class="footer-logo-container">
-                    <img src="{{ setting('logo_dark') ? asset('storage/' . setting('logo_dark')) : asset('assets/images/logo-text-cropped.png') }}" class="footer-logo-text" alt="GREECO Logo">
+                    <img src="{{ setting('logo_dark') ? asset('storage/' . setting('logo_dark')) : asset('assets/images/logo-text-cropped.png') }}"
+                        class="footer-logo-text" alt="GREECO Logo">
                 </div>
                 <div class="spacer-20"></div>
-                <p>Viện Nghiên cứu và Phát triển Kinh tế Xanh (GREECO) là đơn vị khoa học công nghệ hàng đầu, chuyên nghiên cứu, tư vấn và chuyển giao các giải pháp phát triển bền vững, kinh tế tuần hoàn và ứng phó biến đổi khí hậu.</p>
+                <p>Viện Nghiên cứu và Phát triển Kinh tế Xanh (GREECO) là đơn vị khoa học công nghệ hàng đầu, chuyên
+                    nghiên cứu, tư vấn và chuyển giao các giải pháp phát triển bền vững, kinh tế tuần hoàn và ứng phó
+                    biến đổi khí hậu.</p>
 
                 <div class="social-icons mb-sm-30">
-                    <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i
+                            class="fa-brands fa-facebook-f"></i></a>
                     <a href="{{ setting('twitter_url', '#') }}"><i class="fa-brands fa-x-twitter"></i></a>
                     <a href="{{ setting('instagram_url', '#') }}"><i class="fa-brands fa-instagram"></i></a>
                     <a href="{{ setting('youtube_url', '#') }}"><i class="fa-brands fa-youtube"></i></a>
                     <a href="{{ setting('whatsapp_url', '#') }}"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+
+            <div class="col-lg-3 col-sm-12">
                 <div class="row">
-                    <div class="col-lg-6 col-sm-6">
+                    <div class="col-6">
                         <div class="widget">
                             <h5>Giới thiệu</h5>
                             <ul>
@@ -32,7 +37,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-sm-6">
+                    <div class="col-6">
                         <div class="widget">
                             <h5>Lĩnh vực</h5>
                             <ul>
@@ -47,25 +52,49 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
-                <div class="widget">
-                    <div class="fw-bold text-white"><i class="icofont-clock-time me-2 id-color-2"></i>Thời gian làm việc</div>
-                    {{ setting('work_hours', 'Thứ 2 - Thứ 7: 08:00 - 17:00') }}
 
-                    <div class="spacer-20"></div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="row g-4">
+                    <div class="col-sm-5 col-12">
+                        <div class="widget">
+                            <h5>Liên hệ</h5>
+                            <div class="fw-bold text-dark"><i class="icofont-clock-time me-2 id-color-2"></i>Thời gian
+                                làm việc</div>
+                            {{ setting('work_hours', 'Thứ 2 - Thứ 7: 08:00 - 17:00') }}
 
-                    <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color-2"></i>Địa chỉ văn phòng</div>
-                    {{ setting('address', '150 Đường 38-CL, Phường Cát Lái, TP. HCM') }}
+                            <div class="spacer-20"></div>
 
-                    <div class="spacer-20"></div>
+                            <div class="fw-bold text-dark"><i class="icofont-location-pin me-2 id-color-2"></i>Địa chỉ
+                                văn phòng</div>
+                            {{ setting('address', '150 Đường 38-CL, Phường Cát Lái, TP. HCM') }}
 
-                    <div class="fw-bold text-white"><i class="icofont-envelope me-2 id-color-2"></i>Liên hệ qua Email</div>
-                    {{ setting('email', 'info@greeco.vn') }}
+                            <div class="spacer-20"></div>
 
-                    <div class="spacer-20"></div>
+                            <div class="fw-bold text-dark"><i class="icofont-envelope me-2 id-color-2"></i>Liên hệ qua
+                                Email</div>
+                            <a href="mailto:{{ setting('email', 'info@greeco.vn') }}"
+                                class="text-dark text-decoration-none hover-underline d-block">{{ setting('email',
+                                'info@greeco.vn') }}</a>
 
-                    <div class="fw-bold text-white"><i class="icofont-phone me-2 id-color-2"></i>Hotline</div>
-                    {{ setting('phone', '09369 96390') }}
+                            <div class="spacer-20"></div>
+
+                            <div class="fw-bold text-dark"><i class="icofont-phone me-2 id-color-2"></i>Hotline</div>
+                            <a href="tel:{{ str_replace(' ', '', setting('phone', '0936996390')) }}"
+                                class="text-dark text-decoration-none hover-underline d-block">{{ setting('phone', '09369 96390') }}</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-7 col-12">
+                        <div class="widget">
+                            <h5>Bản đồ đường đi</h5>
+                            <div class="footer-map-container">
+                                <iframe
+                                    src="https://maps.google.com/maps?q={{ urlencode(setting('address', '150 Đường 38-CL, Phường Cát Lái, TP. HCM')) }}&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -89,4 +118,3 @@
     </div>
 </footer>
 <!-- footer end -->
-
