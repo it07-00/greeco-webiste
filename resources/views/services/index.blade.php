@@ -41,11 +41,11 @@
                             <a class="service-category-link" href="{{ $category['url'] }}" aria-label="Xem chi tiết {{ $category['name'] }}">
                                 <div class="bg-color text-light rounded-1 overflow-hidden h-100 d-flex flex-column">
                                     <div class="hover relative overflow-hidden text-light text-center">
-                                        <img src="{{ $category['image'] }}" class="hover-scale-1-1 w-100" alt="{{ $category['name'] }}">
+                                        <img src="{{ $category['image'] }}" width="1024" height="1024" class="hover-scale-1-1 w-100" style="height: auto;" alt="{{ $category['name'] }}">
                                         <div class="abs w-100 px-4 hover-op-1 z-4 hover-mt-40 abs-centered">
                                             <span class="btn-line">Xem chi tiết</span>
                                         </div>
-                                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="abs abs-centered w-20" alt="GREECO Icon">
+                                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" width="166" height="166" class="abs abs-centered w-20" style="height: auto;" alt="GREECO Icon">
                                         <div class="abs bg-color z-2 top-0 w-100 h-100 hover-op-1"></div>
                                         <div class="abs z-2 bottom-0 mb-3 w-100 text-center hover-op-0">
                                             <h4 class="mb-3">{{ $category['name'] }}</h4>
@@ -68,7 +68,7 @@
             <div class="container relative z-2">
                 <div class="row">
                     <div class="col-lg-8">
-                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-60px mb-4" alt="GREECO logo icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" width="166" height="166" class="w-60px mb-4" style="height: auto;" alt="GREECO logo icon">
                         <h2 class="text-uppercase mb-4">Hành động ngay vì tương lai bền vững – Liên hệ với GREECO để được tư vấn chuyên sâu</h2>
                         <a class="btn-main" href="{{ route('contact') }}">Liên hệ ngay</a>
                     </div>

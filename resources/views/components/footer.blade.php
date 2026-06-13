@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-sm-12">
                 <div class="footer-logo-container">
                     <img src="{{ setting('logo_dark') ? asset('storage/' . setting('logo_dark')) : asset('assets/images/logo-text-cropped.png') }}"
-                        class="footer-logo-text" alt="GREECO Logo">
+                        width="678" height="222" class="footer-logo-text" alt="GREECO Logo">
                 </div>
                 <div class="spacer-20"></div>
                 <p>Viện Nghiên cứu và Phát triển Kinh tế Xanh (GREECO) là đơn vị khoa học công nghệ hàng đầu, chuyên

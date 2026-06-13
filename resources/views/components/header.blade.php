@@ -33,20 +33,18 @@
             <div class="col-md-12">
                 <div class="de-flex sm-pt10">
                     <div class="de-flex-col">
-                        <!-- logo begin -->
                         <div id="logo">
                             <a href="{{ route('home') }}" class="logo-container">
                                 <div class="logo-text-wrap">
                                     <img class="logo-main" src="{{ setting('logo_light') ? asset('storage/' . setting('logo_light')) : asset('assets/images/logo-text-white-cropped.png') }}"
-                                        alt="GREECO logo">
+                                         width="678" height="222" style="height: auto;" alt="GREECO logo">
                                     <img class="logo-scroll" src="{{ setting('logo_dark') ? asset('storage/' . setting('logo_dark')) : asset('assets/images/logo-text-cropped.png') }}"
-                                        alt="GREECO logo">
+                                         width="678" height="222" style="height: auto;" alt="GREECO logo">
                                     <img class="logo-mobile" src="{{ setting('logo_light') ? asset('storage/' . setting('logo_light')) : asset('assets/images/logo-text-white-cropped.png') }}"
-                                        alt="GREECO logo">
+                                         width="678" height="222" style="height: auto;" alt="GREECO logo">
                                 </div>
                             </a>
                         </div>
-                        <!-- logo end -->
                     </div>
                     <div class="de-flex-col header-col-mid">
                         <!-- mainmenu begin -->

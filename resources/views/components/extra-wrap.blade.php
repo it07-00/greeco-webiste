@@ -7,7 +7,7 @@
 
     <div id="extra-content">
         <div class="extra-logo-container">
-            <img src="{{ setting('logo_light') ? asset('storage/' . setting('logo_light')) : asset('assets/images/logo-text-white-cropped.png') }}" class="extra-logo-text" alt="GREECO Logo">
+            <img src="{{ setting('logo_light') ? asset('storage/' . setting('logo_light')) : asset('assets/images/logo-text-white-cropped.png') }}" width="678" height="222" class="extra-logo-text" alt="GREECO Logo">
         </div>
 
         <div class="spacer-30-line"></div>
