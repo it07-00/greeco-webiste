@@ -14,12 +14,12 @@
 
                         <div class="d-flex">
                             <div class="social-icons">
-                                <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i
-                                        class="fa-brands fa-facebook fa-lg"></i></a>
-                                <a href="{{ setting('twitter_url', '#') }}"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
-                                <a href="{{ setting('youtube_url', '#') }}"><i class="fa-brands fa-youtube fa-lg"></i></a>
-                                <a href="{{ setting('pinterest_url', '#') }}"><i class="fa-brands fa-pinterest fa-lg"></i></a>
-                                <a href="{{ setting('instagram_url', '#') }}"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                                <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}" aria-label="GREECO trên Facebook"><i
+                                        class="fa-brands fa-facebook fa-lg" aria-hidden="true"></i></a>
+                                <a href="{{ setting('twitter_url', '#') }}" aria-label="GREECO trên X (Twitter)"><i class="fa-brands fa-x-twitter fa-lg" aria-hidden="true"></i></a>
+                                <a href="{{ setting('youtube_url', '#') }}" aria-label="GREECO trên YouTube"><i class="fa-brands fa-youtube fa-lg" aria-hidden="true"></i></a>
+                                <a href="{{ setting('pinterest_url', '#') }}" aria-label="GREECO trên Pinterest"><i class="fa-brands fa-pinterest fa-lg" aria-hidden="true"></i></a>
+                                <a href="{{ setting('instagram_url', '#') }}" aria-label="GREECO trên Instagram"><i class="fa-brands fa-instagram fa-lg" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>

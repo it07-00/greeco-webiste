@@ -13,6 +13,11 @@
         :indexable="$indexable ?? true"
     />
 
+    <link rel="preload" href="{{ asset('assets/fonts/fontawesome6/webfonts/fa-solid-900.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('assets/fonts/icofont/fonts/icofont.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('assets/fonts/fontawesome4/fonts/fontawesome-webfont.woff2?v=4.6.3') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('assets/fonts/fontawesome6/webfonts/fa-brands-400.woff2') }}" as="font" type="font/woff2" crossorigin>
+
     @stack('preloads')
 
     <!-- CSS Files ================================================== -->
@@ -35,7 +40,7 @@
 </head>
 <body>
     <div id="wrapper">
-        <a href="#" id="back-to-top"></a>
+        <a href="#" id="back-to-top" aria-label="Cuộn lên đầu trang"></a>
 
         <!-- Floating Contact Buttons -->
         @php

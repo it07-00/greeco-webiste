@@ -35,11 +35,11 @@
         <p>Viện Nghiên cứu và Phát triển Kinh tế Xanh (GREECO) là đơn vị khoa học công nghệ hàng đầu, chuyên nghiên cứu, tư vấn và chuyển giao các giải pháp phát triển bền vững, kinh tế tuần hoàn và ứng phó biến đổi khí hậu.</p>
 
         <div class="social-icons">
-            <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="{{ setting('twitter_url', '#') }}"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="{{ setting('instagram_url', '#') }}"><i class="fa-brands fa-instagram"></i></a>
-            <a href="{{ setting('youtube_url', '#') }}"><i class="fa-brands fa-youtube"></i></a>
-            <a href="{{ setting('whatsapp_url', '#') }}"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}" aria-label="GREECO trên Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="{{ setting('twitter_url', '#') }}" aria-label="GREECO trên X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+            <a href="{{ setting('instagram_url', '#') }}" aria-label="GREECO trên Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="{{ setting('youtube_url', '#') }}" aria-label="GREECO trên YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="{{ setting('whatsapp_url', '#') }}" aria-label="Liên hệ GREECO qua WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
         </div>
     </div>
 </div>
