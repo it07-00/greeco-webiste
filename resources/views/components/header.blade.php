@@ -56,6 +56,7 @@
                                 <ul>
                                     <li><a href="{{ route('about') }}">Về chúng tôi</a></li>
                                     <li><a href="{{ route('team') }}">Ban lãnh đạo & Chuyên gia</a></li>
+                                    <li><a href="{{ route('capability-profile') }}">Hồ sơ năng lực</a></li>
                                     <li><a href="{{ route('gallery') }}">Thư viện ảnh</a></li>
                                 </ul>
                             </li>
@@ -67,7 +68,7 @@
                                     <li><a href="{{ route('services.du-an') }}">Phát triển Dự án</a></li>
                                     <li><a href="{{ route('services.nghien-cuu') }}">Nghiên cứu và Chuyển giao Công nghệ</a></li>
                                     <li><a href="{{ route('services.hoi-thao') }}">Hội thảo & Truyền thông</a></li>
-                                    <li><a href="{{ route('library') }}">Thư viện & Hồ sơ</a></li>
+                                    <li><a href="{{ route('library') }}">Văn bản pháp luật</a></li>
                                 </ul>
                             </li>
                             <li><a class="menu-item" href="{{ route('projects.index') }}">Dự án & Nghiên cứu</a></li>
@@ -93,4 +94,3 @@
     </div>
 </header>
 <!-- header end -->
-

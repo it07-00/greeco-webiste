@@ -19,7 +19,7 @@
             <li><a href="{{ route('services.du-an') }}">Phát triển Dự án</a></li>
             <li><a href="{{ route('services.nghien-cuu') }}">Nghiên cứu và Chuyển giao Công nghệ</a></li>
             <li><a href="{{ route('services.hoi-thao') }}">Hội thảo & Truyền thông</a></li>
-            <li><a href="{{ route('library') }}">Thư viện & Hồ sơ</a></li>
+            <li><a href="{{ route('library') }}">Văn bản pháp luật</a></li>
         </ul>
 
         <div class="spacer-30-line"></div>
@@ -44,4 +44,3 @@
     </div>
 </div>
 <!-- overlay content end -->
-

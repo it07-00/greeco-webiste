@@ -10,6 +10,16 @@
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
+    <url>
+        <loc>{{ route('capability-profile') }}</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ route('library') }}</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
     @foreach ($pages as $page)
     <url>
         <loc>{{ $page->slug === 'gioi-thieu' ? route('about') : url('/' . $page->slug) }}</loc>

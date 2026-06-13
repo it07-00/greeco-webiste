@@ -804,13 +804,6 @@
              $('#back-to-top').addClass('hide');
              $('.show-on-scroll').addClass('hide');
          }
-
-         $('#back-to-top').on('click', function(e) {
-             e.preventDefault();
-             $('html,body').stop(true).animate({
-                 scrollTop: 0
-             }, 700);
-         });
      };
      /* --------------------------------------------------
       * plugin | scroll to
@@ -858,6 +851,10 @@
       * counting number
       * --------------------------------------------------*/
      function de_counter() {
+         if (v_count === '1') {
+             return;
+         }
+
          jQuery('.timer').each(function() {
              var imagePos = jQuery(this).offset().top;
              var topOfWindow = jQuery(window).scrollTop();
@@ -1929,12 +1926,34 @@
          /* --------------------------------------------------
           * window | on scroll
           * --------------------------------------------------*/
-         jQuery(window).on("scroll", function() {
+         $('#back-to-top').on('click', function(e) {
+             e.preventDefault();
+             $('html,body').stop(true).animate({
+                 scrollTop: 0
+             }, 700);
+         });
+
+         $('.toggle').on("click", function(e) {
+             e.preventDefault();
+
+             var $this = $(this);
+
+             if ($this.next().hasClass('show')) {
+                 $this.next().removeClass('show');
+                 $this.next().slideUp(350);
+             } else {
+                 $this.parent().parent().find('li .inner').removeClass('show');
+                 $this.parent().parent().find('li .inner').slideUp(350);
+                 $this.next().toggleClass('show');
+                 $this.next().slideToggle(350);
+             }
+         });
+
+         function handleScroll() {
              /* functions */
              header_sticky();
              de_counter();
              de_progress();
-             init();
              backToTop();
              moveItItemNow();
 			 
@@ -1981,23 +2000,6 @@
                }
              // magic close
 			 
-			 // acc
-			 $('.toggle').on("click", function(e) {
-				e.preventDefault();
-			  
-				var $this = $(this);
-			  
-				if ($this.next().hasClass('show')) {
-					$this.next().removeClass('show');
-					$this.next().slideUp(350);
-				} else {
-					$this.parent().parent().find('li .inner').removeClass('show');
-					$this.parent().parent().find('li .inner').slideUp(350);
-					$this.next().toggleClass('show');
-					$this.next().slideToggle(350);
-				}
-			});
-
              if(header_autoshow==="on"){
                  last_scroll_position = window.scrollY;
 
@@ -2022,9 +2024,22 @@
             var pageHeight = $(document).height() - $(window).height();
             var progress = (100 * pixels) / pageHeight;
             $("div.scrollbar").css("width", progress + "%");
-            $("div.scrollbar-v").css("height", progress + "px");
+             $("div.scrollbar-v").css("height", progress + "px");
 
 
+         }
+
+         var scrollTicking = false;
+         jQuery(window).on("scroll", function() {
+             if (scrollTicking) {
+                 return;
+             }
+
+             scrollTicking = true;
+             window.requestAnimationFrame(function() {
+                 handleScroll();
+                 scrollTicking = false;
+             });
          });
          $(function() {
              "use strict";

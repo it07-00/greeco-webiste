@@ -40,8 +40,8 @@ class MainServiceCategories
         ],
         [
             'slug' => 'thu-vien-ho-so',
-            'name' => 'Thư viện & Hồ sơ',
-            'description' => 'Hồ sơ năng lực và hệ thống văn bản pháp luật môi trường',
+            'name' => 'Văn bản pháp luật',
+            'description' => 'Hệ thống văn bản pháp luật về môi trường và khí hậu',
             'route' => 'library',
         ],
     ];

@@ -13,14 +13,23 @@
         :indexable="$indexable ?? true"
     />
 
+    @stack('preloads')
+
     <!-- CSS Files ================================================== -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap">
-    <link href="{{ asset('assets/css/plugins.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap">
+    <link href="{{ versioned_asset('assets/css/plugins.css') }}" rel="stylesheet" type="text/css">
     @stack('vendor-styles')
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/coloring.css') }}" rel="stylesheet" type="text/css">
-    <link id="colors" href="{{ asset('assets/css/colors/scheme-01.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/fonts/fontawesome4/css/font-awesome.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/fontawesome.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/brands.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/solid.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/fonts/elegant_font/HTML_CSS/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/fonts/et-line-font/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/fonts/icofont/icofont.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/css/coloring.css') }}" rel="stylesheet" type="text/css">
+    <link id="colors" href="{{ versioned_asset('assets/css/colors/scheme-01.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css">
     
     @stack('styles')
 </head>
@@ -71,7 +80,9 @@
         <x-header />
 
         <!-- content begin -->
-        @yield('content')
+        <main id="main-content">
+            @yield('content')
+        </main>
         <!-- content end -->
 
         <x-footer />
@@ -80,8 +91,8 @@
     <x-extra-wrap />
 
     <!-- Javascript Files ================================================== -->
-    <script src="{{ asset('assets/js/plugins.js') }}"></script>
-    <script src="{{ asset('assets/js/designesia.js') }}"></script>
+    <script src="{{ versioned_asset('assets/js/plugins.js') }}" defer></script>
+    <script src="{{ versioned_asset('assets/js/designesia.js') }}" defer></script>
 
     @stack('scripts')
 </body>

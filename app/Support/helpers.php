@@ -6,3 +6,13 @@ if (!function_exists('setting')) {
         return \App\Models\Setting::getValue($key, $default);
     }
 }
+
+if (!function_exists('versioned_asset')) {
+    function versioned_asset(string $path): string
+    {
+        $publicPath = public_path($path);
+        $version = is_file($publicPath) ? filemtime($publicPath) : null;
+
+        return asset($path).($version ? "?v={$version}" : '');
+    }
+}

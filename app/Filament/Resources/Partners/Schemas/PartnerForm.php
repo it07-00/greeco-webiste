@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources\Partners\Schemas;
 
-use Filament\Forms\Components\TextInput;
+use App\Support\OptimizedImageUpload;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -24,10 +25,12 @@ class PartnerForm
                             ->label('Đường dẫn Website')
                             ->url()
                             ->maxLength(255),
-                        FileUpload::make('logo')
-                            ->label('Logo đối tác')
-                            ->image()
-                            ->imageEditor()
+                        OptimizedImageUpload::configure(
+                            FileUpload::make('logo')->label('Logo đối tác'),
+                            1600,
+                            1600,
+                            88,
+                        )
                             ->disk('public')
                             ->directory('partners'),
                         Toggle::make('is_active')
@@ -37,7 +40,7 @@ class PartnerForm
                             ->label('Thứ tự hiển thị')
                             ->numeric()
                             ->default(0),
-                    ])
+                    ]),
             ]);
     }
 }

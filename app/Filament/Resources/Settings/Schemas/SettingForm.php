@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Settings\Schemas;
 
+use App\Support\OptimizedImageUpload;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -50,31 +51,36 @@ class SettingForm
                             ->hidden()
                             ->dehydrated(true),
 
-                         TextInput::make('text_value')
+                        TextInput::make('text_value')
                             ->label('Giá trị')
                             ->visible(fn (callable $get) => in_array($get('type'), ['text', null, '']))
                             ->columnSpanFull(),
- 
-                         Textarea::make('textarea_value')
+
+                        Textarea::make('textarea_value')
                             ->label('Giá trị')
                             ->visible(fn (callable $get) => $get('type') === 'textarea')
                             ->rows(5)
                             ->columnSpanFull(),
- 
-                         RichEditor::make('editor_value')
-                            ->label('Giá trị')
+
+                        OptimizedImageUpload::configureRichEditor(
+                            RichEditor::make('editor_value')->label('Giá trị'),
+                        )
+                            ->fileAttachmentsDisk('public')
+                            ->fileAttachmentsDirectory('settings/attachments')
                             ->visible(fn (callable $get) => $get('type') === 'editor')
                             ->columnSpanFull(),
- 
-                         FileUpload::make('image_value')
-                            ->label('Hình ảnh')
-                            ->image()
-                            ->imageEditor()
+
+                        OptimizedImageUpload::configure(
+                            FileUpload::make('image_value')->label('Hình ảnh'),
+                            2560,
+                            1440,
+                            84,
+                        )
                             ->disk('public')
                             ->directory('settings')
                             ->visible(fn (callable $get) => $get('type') === 'image')
                             ->columnSpanFull(),
- 
+
                         FileUpload::make('file_value')
                             ->label('Tệp tin (PDF, Doc, v.v.)')
                             ->disk('public')

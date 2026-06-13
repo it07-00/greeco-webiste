@@ -775,16 +775,18 @@
 
 @push('scripts')
   <script>
-    jQuery(document).ready(function () {
-      jQuery('.de_tab .de_nav li').on("click", function () {
-        setTimeout(function () {
-          jQuery(window).trigger('resize');
-          jQuery(window).trigger('scroll');
-          jQuery('.owl-carousel').trigger('refresh.owl.carousel');
-          if (typeof wow !== 'undefined' && typeof wow.sync === 'function') {
-            wow.sync();
-          }
-        }, 150);
+    document.addEventListener('DOMContentLoaded', function () {
+      jQuery(document).ready(function () {
+        jQuery('.de_tab .de_nav li').on("click", function () {
+          setTimeout(function () {
+            jQuery(window).trigger('resize');
+            jQuery(window).trigger('scroll');
+            jQuery('.owl-carousel').trigger('refresh.owl.carousel');
+            if (typeof wow !== 'undefined' && typeof wow.sync === 'function') {
+              wow.sync();
+            }
+          }, 150);
+        });
       });
     });
   </script>

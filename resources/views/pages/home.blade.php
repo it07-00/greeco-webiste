@@ -2,19 +2,26 @@
     $seoTitle = 'Viện Nghiên cứu và Phát triển Kinh tế Xanh - GREECO';
     $seoDescription = 'Viện Nghiên cứu và Phát triển Kinh tế Xanh (GREECO) - Đơn vị hàng đầu về chuyển giao công nghệ xanh, kinh tế tuần hoàn và ứng phó biến đổi khí hậu.';
     $canonical = route('home');
+    $lcpBannerImage = $banners->isNotEmpty()
+        ? asset('storage/' . $banners->first()->image)
+        : asset('assets/images/5.webp');
 @endphp
 
 @extends('layouts.app')
 
+@push('preloads')
+    <link rel="preload" as="image" href="{{ $lcpBannerImage }}" fetchpriority="high">
+@endpush
+
 @push('vendor-styles')
-    <link href="{{ asset('assets/css/swiper.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/css/swiper.css') }}" rel="stylesheet" type="text/css">
 @endpush
 
 
 @push('scripts')
-    <script src="{{ asset('assets/js/swiper.js') }}"></script>
-    <script src="{{ asset('assets/js/custom-swiper-2.js') }}"></script>
-    <script src="{{ asset('assets/js/custom-marquee.js') }}"></script>
+    <script src="{{ versioned_asset('assets/js/swiper.js') }}" defer></script>
+    <script src="{{ versioned_asset('assets/js/custom-swiper-2.js') }}" defer></script>
+    <script src="{{ versioned_asset('assets/js/custom-marquee.js') }}" defer></script>
 @endpush
 
 @section('content')
@@ -38,11 +45,15 @@
                                         @if($banner->url)
                                             <a href="{{ $banner->url }}">
                                                 <img src="{{ asset('storage/' . $banner->image) }}" class="w-100 banner-img"
-                                                    alt="GREECO Banner">
+                                                    alt="GREECO Banner" width="2160" height="1215"
+                                                    loading="{{ $loop->first ? 'eager' : 'lazy' }}"
+                                                    fetchpriority="{{ $loop->first ? 'high' : 'low' }}" decoding="async">
                                             </a>
                                         @else
                                             <img src="{{ asset('storage/' . $banner->image) }}" class="w-100 banner-img"
-                                                alt="GREECO Banner">
+                                                alt="GREECO Banner" width="2160" height="1215"
+                                                loading="{{ $loop->first ? 'eager' : 'lazy' }}"
+                                                fetchpriority="{{ $loop->first ? 'high' : 'low' }}" decoding="async">
                                         @endif
                                     </div>
                                 </div>
@@ -51,13 +62,15 @@
                             <!-- Slide Fallback 1 -->
                             <div class="swiper-slide fallback-slide-1">
                                 <div class="swiper-inner">
-                                    <img src="{{ asset('assets/images/5.png') }}" class="w-100 banner-img" alt="GREECO Banner">
+                                    <img src="{{ asset('assets/images/5.webp') }}" class="w-100 banner-img" alt="GREECO Banner"
+                                        width="2160" height="1215" loading="eager" fetchpriority="high" decoding="async">
                                 </div>
                             </div>
                             <!-- Slide Fallback 2 -->
                             <div class="swiper-slide fallback-slide-2">
                                 <div class="swiper-inner">
-                                    <img src="{{ asset('assets/images/6.png') }}" class="w-100 banner-img" alt="GREECO Banner">
+                                    <img src="{{ asset('assets/images/6.webp') }}" class="w-100 banner-img" alt="GREECO Banner"
+                                        width="2160" height="1215" loading="lazy" fetchpriority="low" decoding="async">
                                 </div>
                             </div>
                         @endif
@@ -78,11 +91,13 @@
                         <div class="relative">
                             <div class="rounded-1 bg-body w-90 overflow-hidden wow zoomIn">
                                 <img src="{{ asset('assets/images/misc/1.webp') }}" class="w-100 jarallax wow scaleIn"
+                                    loading="lazy" decoding="async"
                                     alt="Kinh tế xanh bền vững GREECO">
                             </div>
                             <div class="rounded-1 bg-body w-50 abs mb-min-50 end-0 bottom-0 z-2 overflow-hidden shadow-soft wow zoomIn"
                                 data-wow-delay=".2s">
                                 <img src="{{ asset('assets/images/misc/2.webp') }}" class="w-100 wow scaleIn"
+                                    loading="lazy" decoding="async"
                                     data-wow-delay=".2s" alt="Giải pháp năng lượng tái tạo GREECO">
                             </div>
                         </div>
@@ -149,11 +164,13 @@
                                 <div class="bg-color text-light rounded-1 overflow-hidden h-100 d-flex flex-column">
                                     <div class="hover relative overflow-hidden text-light text-center">
                                         <img src="{{ $category['image'] }}" class="hover-scale-1-1 w-100"
+                                            loading="lazy" decoding="async"
                                             alt="{{ $category['name'] }}">
                                         <div class="abs w-100 px-4 hover-op-1 z-4 hover-mt-40 abs-centered">
                                             <span class="btn-main">Xem chi tiết</span>
                                         </div>
                                         <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="abs abs-centered w-20"
+                                            loading="lazy" decoding="async"
                                             alt="GREECO icon">
                                         <div class="abs bg-color z-2 top-0 w-100 h-100 hover-op-1"></div>
                                         <div class="abs z-2 bottom-0 mb-3 w-100 text-center hover-op-0">
@@ -175,6 +192,7 @@
 
         <section class="jarallax text-light relative">
             <img src="{{ asset('assets/images/background/8.webp') }}" class="jarallax-img"
+                loading="lazy" decoding="async"
                 alt="Hành trình phát triển GREECO">
             <div class="de-overlay" style="background: linear-gradient(90deg, rgba(30, 31, 34, 0.85) 0%, rgba(30, 31, 34, 0.45) 100%);"></div>
             <div class="container relative z-1">
@@ -207,6 +225,7 @@
                                                 </div>
                                                 <div class="fs-15 mb-2">Đánh giá từ đối tác chiến lược</div>
                                                 <img src="{{ asset('assets/images/misc/trustpilot.webp') }}" class="w-120px"
+                                                    loading="lazy" decoding="async"
                                                     alt="Trustpilot rating GREECO">
                                             </div>
                                         </div>
@@ -214,6 +233,7 @@
                                     <div class="col-lg-12">
                                         <div class="rounded-1 relative bg-blur p-4">
                                             <img src="{{ setting('icon_journey_tree') ? asset('storage/' . setting('icon_journey_tree')) : asset('assets/images/icons/tree.png') }}"
+                                                loading="lazy" decoding="async"
                                                 class="abs abs-middle w-60px" alt="Dự án thành công icon">
                                             <div class="de_count ps-80 wow fadeInUp">
                                                 <h2 class="mb-0 fs-32"><span class="timer" data-to="550"
@@ -230,6 +250,7 @@
                                     <div class="col-lg-12">
                                         <div class="rounded-1 relative bg-blur p-4">
                                             <img src="{{ setting('icon_journey_happy') ? asset('storage/' . setting('icon_journey_happy')) : asset('assets/images/icons/happy.png') }}"
+                                                loading="lazy" decoding="async"
                                                 class="abs abs-middle w-60px" alt="Doanh nghiệp đồng hành icon">
                                             <div class="de_count ps-80 wow fadeInUp">
                                                 <h2 class="mb-0 fs-32"><span class="timer" data-to="850"
@@ -251,6 +272,7 @@
                                                 </div>
                                                 <div class="fs-15 mb-2">Khảo sát chất lượng dịch vụ</div>
                                                 <img src="{{ asset('assets/images/misc/google.webp') }}" class="w-120px"
+                                                    loading="lazy" decoding="async"
                                                     alt="Google review GREECO">
                                             </div>
                                         </div>
@@ -265,7 +287,8 @@
 
 
     <section class="jarallax text-light relative">
-        <img src="{{ asset('assets/images/background/11.webp') }}" class="jarallax-img" alt="Dịch vụ khoa học GREECO">
+        <img src="{{ asset('assets/images/background/11.webp') }}" class="jarallax-img" alt="Dịch vụ khoa học GREECO"
+            loading="lazy" decoding="async">
         <div class="de-overlay" style="background: rgba(30, 31, 34, 0.90);"></div>
         <div class="container relative z-2">
             <div class="row g-4">
@@ -320,8 +343,8 @@
 
                     <div class="d-flex justify-content-between pb-3 mb-3 border-bottom border-white-op-1 align-items-center">
                         <div>
-                            <h5 class="mb-1 text-white">Đào tạo & Chứng nhận ESG</h5>
-                            <p class="mb-0 op-7 fs-14">Nâng cao năng lực và cấp chứng nhận ESG thực tiễn cho nhân sự.</p>
+                            <h5 class="mb-1 text-white">Đào tạo và lập báo cáo ESG</h5>
+                            <p class="mb-0 op-7 fs-14">Nâng cao năng lực và hướng dẫn lập báo cáo ESG chuẩn GRI cho doanh nghiệp.</p>
                         </div>
                         <div class="text-end">
                             <h5 class="fw-500 mb-0"><a href="{{ route('contact') }}" class="id-color text-decoration-none">Liên hệ <i class="fa-solid fa-arrow-right ms-1 fs-12"></i></a></h5>
@@ -405,7 +428,7 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color text-light padding30 rounded-1">
-                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon" loading="lazy" decoding="async">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">01</div>
                         <div>
                             <h4>Đội ngũ chuyên gia đầu ngành</h4>
@@ -417,7 +440,7 @@
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color text-light padding30 rounded-1">
-                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon" loading="lazy" decoding="async">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">02</div>
                         <div>
                             <h4>Giải pháp thiết thực & Tối ưu</h4>
@@ -429,7 +452,7 @@
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color text-light padding30 rounded-1">
-                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon" loading="lazy" decoding="async">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">03</div>
                         <div>
                             <h4>Dịch vụ khoa học toàn diện</h4>
@@ -441,7 +464,7 @@
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color-2 text-light padding30 rounded-1">
-                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon" loading="lazy" decoding="async">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">04</div>
                         <div>
                             <h4>Bảo chứng chất lượng khoa học</h4>
@@ -453,7 +476,7 @@
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color-2 text-light padding30 rounded-1">
-                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon" loading="lazy" decoding="async">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">05</div>
                         <div>
                             <h4>Mô hình phát triển bền vững</h4>
@@ -465,7 +488,7 @@
 
                 <div class="col-lg-4 col-md-6 wow fadeInUp">
                     <div class="relative h-100 bg-color-2 text-light padding30 rounded-1">
-                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon">
+                        <img src="{{ setting('logo_icon') ? asset('storage/' . setting('logo_icon')) : asset('assets/images/logo-icon.webp') }}" class="w-50px mb-3" alt="GREECO Icon" loading="lazy" decoding="async">
                         <div class="abs m-3 top-0 end-0 p-2 rounded-2 mb-3">06</div>
                         <div>
                             <h4>Cam kết chất lượng</h4>
@@ -479,7 +502,8 @@
     </section>
 
     <section class="jarallax text-light relative">
-        <img src="{{ asset('assets/images/background/4.webp') }}" class="jarallax-img" alt="Đánh giá đối tác GREECO">
+        <img src="{{ asset('assets/images/background/4.webp') }}" class="jarallax-img" alt="Đánh giá đối tác GREECO"
+            loading="lazy" decoding="async">
         <div class="de-overlay"></div>
         <div class="container relative z-2">
             <div class="row justify-content-center">
@@ -516,7 +540,7 @@
                                 data-wow-delay="{{ ($loop->index % 2) * 0.3 }}s">
                                 <a href="{{ route('projects.show', $project) }}" class="abs w-100 h-100 z-5"></a>
                                 <img src="{{ $project->thumbnail ? asset('storage/' . $project->thumbnail) : asset('assets/images/projects/' . (($loop->index % 2) + 1) . '.jpg') }}"
-                                    class="hover-scale-1-1 w-100" alt="{{ $project->title }}">
+                                    class="hover-scale-1-1 w-100" alt="{{ $project->title }}" loading="lazy" decoding="async">
                                 <div class="abs w-100 px-4 hover-op-1 z-4 hover-mt-40 abs-centered">
                                     <div class="mb-3">{{ Str::limit($project->excerpt, 150) }}</div>
                                 </div>
@@ -535,7 +559,7 @@
                                         </div>
 
                                         <div class="w-40px">
-                                            <img src="{{ asset('assets/images/misc/right-arrow.webp') }}" class="w-100" alt="arrow">
+                                            <img src="{{ asset('assets/images/misc/right-arrow.webp') }}" class="w-100" alt="arrow" loading="lazy" decoding="async">
                                         </div>
                                     </div>
                                 </div>
@@ -549,6 +573,7 @@
                         <div class="hover project-card-custom rounded-1 overflow-hidden relative text-light wow fadeInRight" data-wow-delay=".3s">
                             <a href="{{ route('projects.index') }}" class="abs w-100 h-100 z-5"></a>
                             <img src="{{ asset('assets/images/projects/1.jpg') }}" class="hover-scale-1-1 w-100"
+                                loading="lazy" decoding="async"
                                 alt="Ứng dụng Kinh tế Tuần hoàn">
                             <div class="abs bg-color z-2 top-0 w-100 h-100 hover-op-1"></div>
                             <div class="abs z-2 bottom-0 w-100 hover-op-0">
@@ -564,7 +589,7 @@
                                         </div>
                                     </div>
                                     <div class="w-40px">
-                                        <img src="{{ asset('assets/images/misc/right-arrow.webp') }}" class="w-100" alt="arrow">
+                                        <img src="{{ asset('assets/images/misc/right-arrow.webp') }}" class="w-100" alt="arrow" loading="lazy" decoding="async">
                                     </div>
                                 </div>
                             </div>
@@ -601,7 +626,7 @@
                                         <div class="partner-logo-link">
                                     @endif
                                             <img src="{{ asset('storage/' . $partner->logo) }}" class="partner-logo-img"
-                                                alt="{{ $partner->name }}" title="{{ $partner->name }}" loading="lazy">
+                                                alt="{{ $partner->name }}" title="{{ $partner->name }}" loading="lazy" decoding="async">
                                     @if($partner->website_url)
                                         </a>
                                     @else

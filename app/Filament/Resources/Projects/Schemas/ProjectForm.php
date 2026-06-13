@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources\Projects\Schemas;
 
-use Illuminate\Support\Str;
+use App\Support\OptimizedImageUpload;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\DatePicker;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class ProjectForm
 {
@@ -50,8 +51,9 @@ class ProjectForm
                             ])->columns(2),
                         Tab::make('Nội dung')
                             ->schema([
-                                RichEditor::make('content')
-                                    ->label('Nội dung chi tiết')
+                                OptimizedImageUpload::configureRichEditor(
+                                    RichEditor::make('content')->label('Nội dung chi tiết'),
+                                )
                                     ->fileAttachmentsDisk('public')
                                     ->fileAttachmentsDirectory('projects/attachments')
                                     ->resizableImages()
@@ -59,16 +61,18 @@ class ProjectForm
                             ]),
                         Tab::make('Hình ảnh')
                             ->schema([
-                                FileUpload::make('thumbnail')
-                                    ->label('Ảnh đại diện dự án')
-                                    ->image()
-                                    ->imageEditor()
+                                OptimizedImageUpload::configure(
+                                    FileUpload::make('thumbnail')->label('Ảnh đại diện dự án'),
+                                    2560,
+                                    1440,
+                                )
                                     ->disk('public')
                                     ->directory('projects'),
-                                FileUpload::make('og_image')
-                                    ->label('Ảnh chia sẻ Facebook/Zalo')
-                                    ->image()
-                                    ->imageEditor()
+                                OptimizedImageUpload::configure(
+                                    FileUpload::make('og_image')->label('Ảnh chia sẻ Facebook/Zalo'),
+                                    1600,
+                                    900,
+                                )
                                     ->disk('public')
                                     ->directory('seo/og-images'),
                             ]),

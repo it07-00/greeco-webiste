@@ -18,6 +18,13 @@ All rules are structured logically into categorized sections:
    1. GLOBAL UTILITIES & CORE OVERRIDES
    ========================================================================== */
 
+/* Accessibility: main landmark - reset to avoid layout side-effects */
+#main-content {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
 .max-h-50px {
     max-height: 50px;
 }
@@ -217,19 +224,18 @@ header .menu_side_area a.btn-line:hover {
 #subheader {
     background: #F7F5EF !important; /* warm ivory */
     padding: 120px 0 35px !important;
-    border-bottom: 1px solid #e0ddd5 !important;
+    border-bottom: 0 !important;
     overflow: hidden;
     position: relative;
 }
 
 #subheader::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #A7C957, #D7E7C1, transparent); /* olive gradient */
+    display: none !important;
+}
+
+/* Keep the first content block close to the page heading across inner pages. */
+#subheader + section {
+    padding-top: 40px !important;
 }
 
 #subheader h1 {
@@ -638,6 +644,28 @@ section.pt-2.pb-1 {
     }
 }
 
+
+/* ==========================================================================
+   6.5. ACCESSIBILITY FIXES (WCAG AA Compliance)
+   ========================================================================== */
+
+/* Contrast fix: btn-line trên nền tối phải dùng màu trắng để đạt 4.5:1 ratio */
+.text-light a.btn-main.btn-line,
+.text-light a.btn-line,
+.jarallax a.btn-main.btn-line,
+.jarallax a.btn-line,
+section[style*="background"] a.btn-main.btn-line {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.text-light a.btn-main.btn-line:hover,
+.text-light a.btn-line:hover,
+.jarallax a.btn-main.btn-line:hover,
+.jarallax a.btn-line:hover {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0) !important;
+}
 
 /* ==========================================================================
    7. PAGE-SPECIFIC COMPONENTS
@@ -1639,4 +1667,3 @@ blockquote .blockquote-footer {
         height: 280px !important;
     }
 }
-

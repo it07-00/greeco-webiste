@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Banners\Schemas;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
+use App\Support\OptimizedImageUpload;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -17,10 +17,13 @@ class BannerForm
             ->components([
                 Section::make('Cấu hình Banner')
                     ->schema([
-                        FileUpload::make('image')
-                            ->label('Hình ảnh banner')
-                            ->image()
-                            ->imageEditor()
+                        OptimizedImageUpload::configure(
+                            FileUpload::make('image')->label('Hình ảnh banner'),
+                            3840,
+                            2160,
+                            84,
+                            'Ảnh sẽ giữ độ nét tối đa 4K (3840×2160) và chuyển sang WebP để tải nhanh hơn.',
+                        )
                             ->disk('public')
                             ->directory('banners')
                             ->required(),

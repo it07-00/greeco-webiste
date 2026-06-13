@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             mkdir($storageBannersDir, 0755, true);
             chmod($storageBannersDir, 0755);
         }
-        foreach (['5.png', '6.png'] as $file) {
+        foreach (['5.webp', '6.webp'] as $file) {
             $src = public_path("assets/images/{$file}");
             $dest = "{$storageBannersDir}/{$file}";
             if (file_exists($src)) {
@@ -52,13 +52,13 @@ class DatabaseSeeder extends Seeder
 
         $bannersData = [
             [
-                'image' => 'banners/5.png',
+                'image' => 'banners/5.webp',
                 'url' => null,
                 'sort_order' => 1,
                 'is_active' => true,
             ],
             [
-                'image' => 'banners/6.png',
+                'image' => 'banners/6.webp',
                 'url' => null,
                 'sort_order' => 2,
                 'is_active' => true,
@@ -150,7 +150,7 @@ class DatabaseSeeder extends Seeder
             ['slug' => 'phat-trien-du-an', 'name' => 'Phát triển Dự án', 'description' => 'Phát triển dự án giảm phát thải carbon và tín chỉ nhựa', 'sort_order' => 3, 'is_active' => true],
             ['slug' => 'nghien-cuu-chuyen-giao', 'name' => 'Nghiên cứu và Chuyển giao Công nghệ', 'description' => 'Nghiên cứu ứng dụng và chuyển giao công nghệ xanh', 'sort_order' => 4, 'is_active' => true],
             ['slug' => 'hoi-thao-truyen-thong', 'name' => 'Hội thảo & Truyền thông', 'description' => 'Tổ chức hội thảo khoa học và truyền thông Net Zero', 'sort_order' => 5, 'is_active' => true],
-            ['slug' => 'thu-vien-ho-so', 'name' => 'Thư viện & Hồ sơ', 'description' => 'Hồ sơ năng lực và hệ thống văn bản pháp luật môi trường', 'sort_order' => 6, 'is_active' => true],
+            ['slug' => 'thu-vien-ho-so', 'name' => 'Văn bản pháp luật', 'description' => 'Hệ thống văn bản pháp luật về môi trường và khí hậu', 'sort_order' => 6, 'is_active' => true],
         ];
 
         $categories = [];

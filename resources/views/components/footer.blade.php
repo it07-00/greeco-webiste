@@ -13,12 +13,11 @@
                     biến đổi khí hậu.</p>
 
                 <div class="social-icons mb-sm-30">
-                    <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}"><i
-                            class="fa-brands fa-facebook-f"></i></a>
-                    <a href="{{ setting('twitter_url', '#') }}"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="{{ setting('instagram_url', '#') }}"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="{{ setting('youtube_url', '#') }}"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="{{ setting('whatsapp_url', '#') }}"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="{{ setting('facebook_url', 'https://www.facebook.com/greecoofficial?locale=vi_VN') }}" aria-label="GREECO trên Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="{{ setting('twitter_url', '#') }}" aria-label="GREECO trên X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+                    <a href="{{ setting('instagram_url', '#') }}" aria-label="GREECO trên Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    <a href="{{ setting('youtube_url', '#') }}" aria-label="GREECO trên YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                    <a href="{{ setting('whatsapp_url', '#') }}" aria-label="Liên hệ GREECO qua WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
                 </div>
             </div>
 
@@ -30,6 +29,7 @@
                             <ul>
                                 <li><a href="{{ route('home') }}">Trang chủ</a></li>
                                 <li><a href="{{ route('about') }}">Về chúng tôi</a></li>
+                                <li><a href="{{ route('capability-profile') }}">Hồ sơ năng lực</a></li>
                                 <li><a href="{{ route('services.index') }}">Lĩnh vực hoạt động</a></li>
                                 <li><a href="{{ route('projects.index') }}">Dự án nghiên cứu</a></li>
                                 <li><a href="{{ route('posts.index') }}">Tin tức</a></li>
@@ -46,7 +46,7 @@
                                 <li><a href="{{ route('services.tu-van') }}">Tư vấn môi trường</a></li>
                                 <li><a href="{{ route('services.du-an') }}">Dự án tăng trưởng xanh</a></li>
                                 <li><a href="{{ route('services.hoi-thao') }}">Hội thảo & Truyền thông</a></li>
-                                <li><a href="{{ route('library') }}">Thư viện & Hồ sơ</a></li>
+                                <li><a href="{{ route('library') }}">Văn bản pháp luật</a></li>
                             </ul>
                         </div>
                     </div>
@@ -89,6 +89,7 @@
                             <h5>Bản đồ đường đi</h5>
                             <div class="footer-map-container">
                                 <iframe
+                                    title="Bản đồ vị trí Viện GREECO"
                                     src="https://maps.google.com/maps?q={{ urlencode(setting('address', '150 Đường 38-CL, Phường Cát Lái, TP. HCM')) }}&t=&z=15&ie=UTF8&iwloc=&output=embed"
                                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>

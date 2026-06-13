@@ -2,18 +2,19 @@
 
 namespace App\Filament\Resources\Posts\Schemas;
 
-use Illuminate\Support\Str;
-use Filament\Schemas\Components\Tabs;
-use Filament\Schemas\Components\Tabs\Tab;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\RichEditor;
+use App\Support\OptimizedImageUpload;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\DateTimePicker;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class PostForm
 {
@@ -50,8 +51,9 @@ class PostForm
                             ]),
                         Tab::make('Nội dung')
                             ->schema([
-                                RichEditor::make('content')
-                                    ->label('Nội dung bài viết')
+                                OptimizedImageUpload::configureRichEditor(
+                                    RichEditor::make('content')->label('Nội dung bài viết'),
+                                )
                                     ->fileAttachmentsDisk('public')
                                     ->fileAttachmentsDirectory('posts/attachments')
                                     ->resizableImages()
@@ -59,16 +61,18 @@ class PostForm
                             ]),
                         Tab::make('Hình ảnh')
                             ->schema([
-                                FileUpload::make('thumbnail')
-                                    ->label('Ảnh đại diện')
-                                    ->image()
-                                    ->imageEditor()
+                                OptimizedImageUpload::configure(
+                                    FileUpload::make('thumbnail')->label('Ảnh đại diện'),
+                                    2560,
+                                    1440,
+                                )
                                     ->disk('public')
                                     ->directory('posts'),
-                                FileUpload::make('og_image')
-                                    ->label('Ảnh chia sẻ Facebook/Zalo')
-                                    ->image()
-                                    ->imageEditor()
+                                OptimizedImageUpload::configure(
+                                    FileUpload::make('og_image')->label('Ảnh chia sẻ Facebook/Zalo'),
+                                    1600,
+                                    900,
+                                )
                                     ->disk('public')
                                     ->directory('seo/og-images'),
                             ]),
