@@ -18,19 +18,23 @@
     <link rel="preload" href="{{ asset('assets/fonts/fontawesome4/fonts/fontawesome-webfont.woff2?v=4.6.3') }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ asset('assets/fonts/fontawesome6/webfonts/fa-brands-400.woff2') }}" as="font" type="font/woff2" crossorigin>
 
+    <link rel="preload" href="{{ versioned_asset('assets/css/bootstrap.min.css') }}" as="style">
+    <link rel="preload" href="{{ versioned_asset('assets/css/style.css') }}" as="style">
+    <link rel="preload" href="{{ versioned_asset('assets/css/custom.css') }}" as="style">
+
     @stack('preloads')
 
     <!-- CSS Files ================================================== -->
     <link href="{{ versioned_asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap">
     <link href="{{ versioned_asset('assets/css/plugins.css') }}" rel="stylesheet" type="text/css">
     @stack('vendor-styles')
-    <link href="{{ versioned_asset('assets/fonts/fontawesome4/css/font-awesome.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/fontawesome.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/brands.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/solid.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ versioned_asset('assets/fonts/elegant_font/HTML_CSS/style.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ versioned_asset('assets/fonts/et-line-font/style.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ versioned_asset('assets/fonts/icofont/icofont.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ versioned_asset('assets/fonts/fontawesome4/css/font-awesome.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
+    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/fontawesome.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
+    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/brands.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
+    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/solid.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
+    <link href="{{ versioned_asset('assets/fonts/elegant_font/HTML_CSS/style.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
+    <link href="{{ versioned_asset('assets/fonts/et-line-font/style.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
+    <link href="{{ versioned_asset('assets/fonts/icofont/icofont.min.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
     <link href="{{ versioned_asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ versioned_asset('assets/css/coloring.css') }}" rel="stylesheet" type="text/css">
     <link id="colors" href="{{ versioned_asset('assets/css/colors/scheme-01.css') }}" rel="stylesheet" type="text/css">
