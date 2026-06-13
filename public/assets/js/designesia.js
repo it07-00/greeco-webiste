@@ -1510,7 +1510,7 @@
          de_sidebar();
          de_share();         
          load_owl();  
-         $(".jarallax").jarallax();
+         $(".jarallax").jarallax({ disableParallax: /iPad|iPhone|iPod|Android/ });
          //skrollr.init();
 
         $(function() {

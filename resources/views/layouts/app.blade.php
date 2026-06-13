@@ -12,11 +12,14 @@
         :image="$ogImage ?? asset('assets/images/logo-greeco.png')"
         :indexable="$indexable ?? true"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <link rel="preload" href="{{ asset('assets/fonts/fontawesome6/webfonts/fa-solid-900.woff2') }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ asset('assets/fonts/icofont/fonts/icofont.woff2') }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ asset('assets/fonts/fontawesome4/fonts/fontawesome-webfont.woff2?v=4.6.3') }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ asset('assets/fonts/fontawesome6/webfonts/fa-brands-400.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ versioned_asset('assets/fonts/fontawesome6/webfonts/fa-solid-900.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ versioned_asset('assets/fonts/icofont/fonts/icofont.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ versioned_asset('assets/fonts/fontawesome4/fonts/fontawesome-webfont.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ versioned_asset('assets/fonts/fontawesome6/webfonts/fa-brands-400.woff2') }}" as="font" type="font/woff2" crossorigin>
 
     <link rel="preload" href="{{ versioned_asset('assets/css/bootstrap.min.css') }}" as="style">
     <link rel="preload" href="{{ versioned_asset('assets/css/style.css') }}" as="style">
@@ -26,15 +29,38 @@
 
     <!-- CSS Files ================================================== -->
     <link href="{{ versioned_asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap">
-    <link href="{{ versioned_asset('assets/css/plugins.css') }}" rel="stylesheet" type="text/css">
+    <link rel="preload" href="{{ versioned_asset('assets/css/plugins.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="{{ versioned_asset('assets/css/plugins.css') }}" rel="stylesheet" type="text/css"></noscript>
     @stack('vendor-styles')
-    <link href="{{ versioned_asset('assets/fonts/fontawesome4/css/font-awesome.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
-    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/fontawesome.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
-    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/brands.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
-    <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/solid.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
-    <link href="{{ versioned_asset('assets/fonts/elegant_font/HTML_CSS/style.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
-    <link href="{{ versioned_asset('assets/fonts/et-line-font/style.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
-    <link href="{{ versioned_asset('assets/fonts/icofont/icofont.min.css') }}" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
+    <script>
+        window.addEventListener('load', function() {
+            var fonts = [
+                "{{ versioned_asset('assets/fonts/fontawesome4/css/font-awesome.css') }}",
+                "{{ versioned_asset('assets/fonts/fontawesome6/css/fontawesome.css') }}",
+                "{{ versioned_asset('assets/fonts/fontawesome6/css/brands.css') }}",
+                "{{ versioned_asset('assets/fonts/fontawesome6/css/solid.css') }}",
+                "{{ versioned_asset('assets/fonts/elegant_font/HTML_CSS/style.css') }}",
+                "{{ versioned_asset('assets/fonts/et-line-font/style.css') }}",
+                "{{ versioned_asset('assets/fonts/icofont/icofont.min.css') }}"
+            ];
+            fonts.forEach(function(href) {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = href;
+                link.type = 'text/css';
+                document.head.appendChild(link);
+            });
+        });
+    </script>
+    <noscript>
+        <link href="{{ versioned_asset('assets/fonts/fontawesome4/css/font-awesome.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/fontawesome.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/brands.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ versioned_asset('assets/fonts/fontawesome6/css/solid.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ versioned_asset('assets/fonts/elegant_font/HTML_CSS/style.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ versioned_asset('assets/fonts/et-line-font/style.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ versioned_asset('assets/fonts/icofont/icofont.min.css') }}" rel="stylesheet" type="text/css">
+    </noscript>
     <link href="{{ versioned_asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ versioned_asset('assets/css/coloring.css') }}" rel="stylesheet" type="text/css">
     <link id="colors" href="{{ versioned_asset('assets/css/colors/scheme-01.css') }}" rel="stylesheet" type="text/css">

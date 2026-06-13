@@ -14,7 +14,8 @@
 @endpush
 
 @push('vendor-styles')
-    <link href="{{ versioned_asset('assets/css/swiper.css') }}" rel="stylesheet" type="text/css">
+    <link rel="preload" href="{{ versioned_asset('assets/css/swiper.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="{{ versioned_asset('assets/css/swiper.css') }}" rel="stylesheet" type="text/css"></noscript>
 @endpush
 
 
