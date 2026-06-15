@@ -81,6 +81,24 @@ class OptimizedImageUpload
         int $maxHeight = 2160,
         int $quality = 84,
     ): ?string {
+        // Skip WebP optimization for website favicon setting so it preserves its format (like PNG/ICO)
+        $record = $component->getRecord();
+        $key = null;
+        if ($record instanceof \App\Models\Setting) {
+            $key = $record->key;
+        } else {
+            try {
+                $state = $component->getContainer()->getRawState();
+                $key = $state['key'] ?? null;
+            } catch (\Throwable $e) {
+                // Ignore
+            }
+        }
+        
+        if ($key === 'favicon') {
+            return $component->saveUploadedFile($file);
+        }
+
         if (! self::shouldOptimize($file)) {
             return $component->saveUploadedFile($file);
         }

@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
 
         // 2. Seed Banners / Sliders (Only 2 records using the new visual banners)
         Banner::query()->delete();
-        
+
         $storageBannersDir = public_path('storage/banners');
         if (!file_exists($storageBannersDir)) {
             mkdir($storageBannersDir, 0755, true);
@@ -705,6 +705,7 @@ class DatabaseSeeder extends Seeder
 
         $filesToCopy = [
             ['src' => 'logo-icon.webp', 'dest' => 'favicon.webp'],
+            ['src' => 'favicon.png', 'dest' => 'favicon.png'],
             ['src' => 'logo-text-white-cropped.png', 'dest' => 'logo_light.png'],
             ['src' => 'logo-text-cropped.png', 'dest' => 'logo_dark.png'],
             ['src' => 'logo-icon.webp', 'dest' => 'logo_icon.webp'],

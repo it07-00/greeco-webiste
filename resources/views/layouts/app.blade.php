@@ -3,7 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ (setting('favicon') ? asset('storage/' . setting('favicon')) : asset('assets/images/logo-icon.webp')) }}?v=2">
+    <?php
+        $faviconValue = setting('favicon');
+        $faviconPath = $faviconValue ? 'storage/' . $faviconValue : 'assets/images/favicon.png';
+        if (str_ends_with($faviconPath, '.webp')) {
+            $pngPath = str_replace('.webp', '.png', $faviconPath);
+            if (file_exists(public_path($pngPath))) {
+                $faviconUrl = asset($pngPath);
+            } else {
+                $faviconUrl = asset('assets/images/favicon.png');
+            }
+        } else {
+            $faviconUrl = asset($faviconPath);
+        }
+        $faviconVersion = is_file(public_path($faviconPath)) ? filemtime(public_path($faviconPath)) : '2';
+    ?>
+    <link rel="icon" type="image/png" href="{{ $faviconUrl }}?v={{ $faviconVersion }}">
+    <link rel="apple-touch-icon" href="{{ $faviconUrl }}?v={{ $faviconVersion }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}?v={{ $faviconVersion }}">
 
     <x-seo
         :title="$seoTitle ?? 'Viện Nghiên cứu và Phát triển Kinh tế Xanh - GREECO'"
